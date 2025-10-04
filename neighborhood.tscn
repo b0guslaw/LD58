@@ -1,4 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpcx3eqbjfbwq"]
+[gd_scene load_steps=16 format=3 uid="uid://bdtajsldlggkr"]
+
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="1_xi4q1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fliuw"]
 albedo_color = Color(0.31, 0.099199995, 0.099199995, 1)
@@ -626,3 +628,6 @@ directional_shadow_mode = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ra0do")
+
+[node name="Player" parent="." instance=ExtResource("1_xi4q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1264105, 0)
