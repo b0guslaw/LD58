@@ -7,6 +7,7 @@ extends Node3D
 func _ready():
 	ScreenFade.instant_fill()
 	TrashUi.set_up_trash_ui()
+	NotificationUi.reset()
 	await get_tree().process_frame
 	ScreenFade.fade_in()
 	
@@ -16,6 +17,7 @@ func _ready():
 
 func _on_player_died():
 	print("oof") # set up "game won" or "game over" ui
+	NotificationUi.lose()
 	await get_tree().create_timer(reset_wait_time).timeout
 	ScreenFade.fade_out()
 	await ScreenFade.fade_out_complete
@@ -23,6 +25,7 @@ func _on_player_died():
 
 func _on_game_won():
 	print("yay") # set up "game won" or "game over" ui
+	NotificationUi.win()
 	await get_tree().create_timer(reset_wait_time).timeout
 	ScreenFade.fade_out()
 	await ScreenFade.fade_out_complete

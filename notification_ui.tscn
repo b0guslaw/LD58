@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsnoy8tb0mum3"]
+
+[ext_resource type="FontFile" uid="uid://beok78jsw35dm" path="res://BaksoSapi.otf" id="1_dmtbb"]
+[ext_resource type="Script" uid="uid://b468igf6r7e3w" path="res://notification_ui.gd" id="1_wsrcr"]
+
+[sub_resource type="FontVariation" id="FontVariation_wsrcr"]
+base_font = ExtResource("1_dmtbb")
+spacing_glyph = -5
+
+[sub_resource type="LabelSettings" id="LabelSettings_dh02j"]
+font = SubResource("FontVariation_wsrcr")
+font_size = 500
+
+[node name="NotificationUI" type="CanvasLayer"]
+script = ExtResource("1_wsrcr")
+win_color = Color(0.7163567, 0.60059994, 0.77, 1)
+lose_color = Color(0.81, 0.43956, 0.4131, 1)
+warning_color = Color(0.27, 0.05940001, 0.08046, 1)
+
+[node name="NotificationLabelHuge" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -10.0
+offset_right = 0.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RUN"
+label_settings = SubResource("LabelSettings_dh02j")
+horizontal_alignment = 1
+vertical_alignment = 1
