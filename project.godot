@@ -17,6 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+NotificationUi="*res://notification_ui.tscn"
+TrashUi="*res://trash_ui.tscn"
 ScreenFade="*res://screen_fade.tscn"
 
 [editor]

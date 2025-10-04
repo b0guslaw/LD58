@@ -128,20 +128,22 @@ material = SubResource("StandardMaterial3D_bhmmv")
 metadata/_edit_lock_ = true
 
 [node name="TrashCan" type="CSGCombiner3D" parent="CSGCombiner3D/House1"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 21.000002, 0, 21.999998)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.5148783, 0, -0.7282562)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/House1/TrashCan"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.301548, 1.2797323, 22.637045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2797323, 0)
 radius = 0.55566406
 height = 0.08630371
 sides = 12
 material = SubResource("StandardMaterial3D_x5m6a")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/House1/TrashCan"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.301548, 0.62759674, 22.637045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62759674, 0)
 height = 1.25
 sides = 12
 material = SubResource("StandardMaterial3D_x5m6a")
+
+[node name="Interactable" parent="CSGCombiner3D/House1/TrashCan" instance=ExtResource("3_bhmmv")]
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D/House1"]
 transform = Transform3D(0.92644984, 0, 0.3764183, 0, 1, 0, -0.3764183, 0, 0.92644984, -15.272535, 0.510486, 0.24261665)
@@ -219,20 +221,22 @@ material = SubResource("StandardMaterial3D_bhmmv")
 metadata/_edit_lock_ = true
 
 [node name="TrashCan" type="CSGCombiner3D" parent="CSGCombiner3D/House2"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 21.000002, 0, 21.999998)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.6585636, 0, -0.55016136)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/House2/TrashCan"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.301548, 1.2797323, 22.637045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2797323, 0)
 radius = 0.55566406
 height = 0.08630371
 sides = 12
 material = SubResource("StandardMaterial3D_x5m6a")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/House2/TrashCan"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.301548, 0.62759674, 22.637045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62759674, 0)
 height = 1.25
 sides = 12
 material = SubResource("StandardMaterial3D_x5m6a")
+
+[node name="Interactable" parent="CSGCombiner3D/House2/TrashCan" instance=ExtResource("3_bhmmv")]
 
 [node name="box" type="CSGBox3D" parent="CSGCombiner3D/House2"]
 transform = Transform3D(0.988594, 0, 0.15060519, 0, 1, 0, -0.15060519, 0, 0.988594, -5.065935, 0.46542215, 10.376234)
@@ -602,6 +606,8 @@ height = 1.25
 sides = 12
 material = SubResource("StandardMaterial3D_x5m6a")
 
+[node name="Interactable" parent="CSGCombiner3D/TrashCan" instance=ExtResource("3_bhmmv")]
+
 [node name="TrashCan2" type="CSGCombiner3D" parent="CSGCombiner3D"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.99704, 0, -5.3300686)
 
@@ -636,7 +642,7 @@ directional_shadow_mode = 0
 environment = SubResource("Environment_ra0do")
 
 [node name="Player" parent="." instance=ExtResource("1_xi4q1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1264105, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12641048, 0)
 
 [node name="Doggo" parent="." instance=ExtResource("2_ra0do")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.399849, -0.077050924, -8.90213)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.406372, -0.077050924, -8.903866)

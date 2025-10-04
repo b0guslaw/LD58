@@ -46,7 +46,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vjuh0")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2788539, 0.399777)
-target_position = Vector3(-8.71685, 0, -2.6733608)
+target_position = Vector3(8.111946, 0, -1.6963)
 collision_mask = 3
 
 [node name="debug_vision_cone" type="Node3D" parent="."]
@@ -70,7 +70,7 @@ material = SubResource("StandardMaterial3D_ew3t6")
 [node name="debug_wander_target" type="Node3D" parent="."]
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_wander_target"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.71685, 0.2788539, -2.273584)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.111946, 0.2788539, -1.296523)
 top_level = true
 radius = 0.15
 height = 43.736

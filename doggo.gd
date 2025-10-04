@@ -39,6 +39,7 @@ var raycast: RayCast3D
 var debug_cone: CSGCylinder3D
 var player: Node3D
 var can_see_player = false
+var has_warned = false
 var chase_timer: float = 0.0
 var search_timer: float = 0.0
 var search_direction: Vector3
@@ -78,6 +79,9 @@ func _physics_process(delta):
 	can_see_player = check_player_seen()
 	
 	if can_see_player:
+		if not has_warned:
+			NotificationUi.warning()
+			has_warned = true
 		var variance = randf_range(-chase_give_up_variance, chase_give_up_variance)
 		chase_timer = chase_give_up_time + variance
 		search_timer = 0.0
@@ -168,6 +172,7 @@ func choose_new_wander_target():
 	update_debug_tools()
 	
 func wander(delta):
+	has_warned = false
 	if wander_timer > 0: # waiting
 		wander_timer -= delta
 		search_behavior(delta)

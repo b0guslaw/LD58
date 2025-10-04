@@ -31,6 +31,7 @@ func _ready() -> void:
 	pitch = camera_pivot.global_rotation.x
 	
 	camera_pivot.top_level = true
+	TrashUi.update_trash_ui(trash_counter)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -115,7 +116,7 @@ func on_interaction_complete(interactable: Node3D) -> void:
 	if current_interaction == interactable:
 		current_interaction = null
 		trash_counter += 1
-		print("Trash counter: ", trash_counter)
+		TrashUi.update_trash_ui(trash_counter)
 
 func _on_interaction_body_entered(body: Node3D) -> void:	
 	if body.is_in_group("interactables"):
