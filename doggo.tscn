@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ltfpc6cnc0d"]
+[gd_scene load_steps=8 format=3 uid="uid://ltfpc6cnc0d"]
 
 [ext_resource type="Script" uid="uid://bxkcyuceyoupn" path="res://doggo.gd" id="1_ew3t6"]
 
@@ -15,12 +15,22 @@ albedo_color = Color(0.14, 0.050400004, 0.050400004, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rthgg"]
 transparency = 4
-albedo_color = Color(1, 0.01999998, 0.01999998, 0.5647059)
+albedo_color = Color(1, 0.01999998, 0.01999998, 0.24313726)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ew3t6"]
+transparency = 4
+albedo_color = Color(0.2988, 0.6617867, 0.83, 0.10980392)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i62aq"]
+transparency = 4
+albedo_color = Color(0.7014084, 0.73, 0.38689998, 0.25490198)
 
 [node name="Doggo" type="CharacterBody3D"]
 script = ExtResource("1_ew3t6")
-detection_range = 7.32
-detection_angle = 23.19
+detection_angle = 15.0
+wander_speed = 3.0
+wander_range = 25.0
+wander_pause_time = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.33369958, 0)
@@ -34,14 +44,32 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vjuh0")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2788539, 0.399777)
-target_position = Vector3(0, 0, 10)
+target_position = Vector3(22.908134, -0.2788539, -10.199244)
 collision_mask = 3
 
 [node name="debug_vision_cone" type="Node3D" parent="."]
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_vision_cone"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.35555327, 3.66)
-radius = 3.1358438
-height = 7.32
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.35555327, 5)
+radius = 2.679492
+height = 10.0
 cone = true
 material = SubResource("StandardMaterial3D_rthgg")
+
+[node name="debug_wander_range" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_wander_range"]
+top_level = true
+radius = 25.0
+height = 0.24816895
+sides = 16
+material = SubResource("StandardMaterial3D_ew3t6")
+
+[node name="debug_wander_target" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_wander_target"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.908134, 0, -9.799466)
+top_level = true
+radius = 0.15
+height = 43.736
+material = SubResource("StandardMaterial3D_i62aq")

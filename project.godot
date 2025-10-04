@@ -15,6 +15,11 @@ run/main_scene="uid://bdtajsldlggkr"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor]
+
+movie_writer/movie_file="D:/_GODOT/test.ogv"
+movie_writer/fps=24
+
 [global_group]
 
 player=""

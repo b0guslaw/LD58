@@ -634,5 +634,5 @@ environment = SubResource("Environment_ra0do")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1264105, 0)
 
 [node name="Doggo" parent="." instance=ExtResource("2_ra0do")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.274033, 0.10701108, -11.383602)
-detection_range = 10.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.399849, -0.077050924, -8.90213)
+wander_target_threshold = 0.5
