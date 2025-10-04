@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+TrashUi="*res://trash_ui.tscn"
 ScreenFade="*res://screen_fade.tscn"
 
 [editor]
