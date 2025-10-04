@@ -12,6 +12,7 @@ extends CharacterBody3D
 		update_debug_tools()
 @export var chase_speed = 4.0
 @export var chase_give_up_time = 7.0
+@export var chase_give_up_variance = 2.0
 @export var chase_rotate_time = 1.0
 @export var wander_speed = 2.0
 @export var wander_range = 10.0: #raidus of wander from start pos
@@ -76,7 +77,8 @@ func _physics_process(delta):
 	can_see_player = check_player_seen()
 	
 	if can_see_player:
-		chase_timer = chase_give_up_time
+		var variance = randf_range(-chase_give_up_variance, chase_give_up_variance)
+		chase_timer = chase_give_up_time + variance
 		search_timer = 0.0
 		last_known_pos = player.global_position
 	
@@ -130,13 +132,7 @@ func chase(delta):
 			last_known_pos = global_position
 			search_timer = 0.0
 	else:
-		velocity = Vector3.ZERO
-		search_timer -= delta
-		if search_timer <= 0:
-			var random_angle = randf() * TAU
-			search_direction = Vector3(cos(random_angle), 0, sin(random_angle))
-			search_timer = chase_rotate_time
-		smooth_look_at(search_direction, delta)
+		search_behavior(delta)
 
 func choose_new_wander_target():
 	var rand_angle = randf() * TAU
@@ -167,7 +163,7 @@ func choose_new_wander_target():
 func wander(delta):
 	if wander_timer > 0: # waiting
 		wander_timer -= delta
-		velocity = Vector3.ZERO
+		search_behavior(delta)
 		stuck_timer = 0
 		last_position = global_position
 		return
@@ -190,6 +186,15 @@ func wander(delta):
 		choose_new_wander_target()
 	
 	smooth_look_at(direction, delta)
+
+func search_behavior(delta):
+	velocity = Vector3.ZERO
+	search_timer -= delta
+	if search_timer <= 0:
+		var random_angle = randf() * TAU
+		search_direction = Vector3(cos(random_angle), 0, sin(random_angle))
+		search_timer = chase_rotate_time
+	smooth_look_at(search_direction, delta)
 
 func check_if_stuck(delta, expected_speed: float) -> bool:
 	var expected_movement = expected_speed * delta
