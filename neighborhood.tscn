@@ -616,6 +616,8 @@ height = 1.25
 sides = 12
 material = SubResource("StandardMaterial3D_x5m6a")
 
+[node name="Interactable" parent="CSGCombiner3D/TrashCan2" instance=ExtResource("3_bhmmv")]
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.88360226, 0.25521952, -0.39256853, 0.46823826, -0.48161924, 0.74080753, 0, -0.8383948, -0.5450634, 0, 21.94833, -13.208276)
 light_color = Color(0.46859998, 0.6576966, 0.71, 1)
@@ -636,6 +638,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1264105, 0)
 
 [node name="Doggo" parent="." instance=ExtResource("2_ra0do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.399849, -0.077050924, -8.90213)
-
-[node name="Interactable" parent="." instance=ExtResource("3_bhmmv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.748264, 1.1163254, 0)
