@@ -26,6 +26,8 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	yaw = camera_pivot.global_rotation.y
 	pitch = camera_pivot.global_rotation.x
+	
+	camera_pivot.top_level = true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -37,6 +39,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		start_interaction(interactable_in_range)
 
 func _physics_process(delta: float) -> void:
+	camera_pivot.global_position = global_position
 	camera_pivot.global_rotation.y = yaw
 	camera_pivot.global_rotation.x = pitch
 	
