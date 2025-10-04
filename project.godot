@@ -15,6 +15,10 @@ run/main_scene="uid://bdtajsldlggkr"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ScreenFade="*res://screen_fade.tscn"
+
 [editor]
 
 movie_writer/movie_file="D:/_GODOT/test.ogv"

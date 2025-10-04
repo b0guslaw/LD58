@@ -14,6 +14,7 @@ extends CharacterBody3D
 @export var chase_give_up_time = 7.0
 @export var chase_give_up_variance = 2.0
 @export var chase_rotate_time = 1.0
+@export var knockback_power = 10.0
 @export var wander_speed = 2.0
 @export var wander_range = 10.0: #raidus of wander from start pos
 	set(value):
@@ -91,6 +92,12 @@ func _physics_process(delta):
 			velocity = Vector3.ZERO
 	else:
 		wander(delta)
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider and collider.is_in_group("player") and collider.has_method("take_damage"):
+			collider.take_damage(global_position, knockback_power)
 	
 	move_and_slide()
 

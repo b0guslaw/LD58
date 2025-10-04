@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdtajsldlggkr"]
+[gd_scene load_steps=19 format=3 uid="uid://bdtajsldlggkr"]
 
+[ext_resource type="Script" uid="uid://7ybtcxbjcnd8" path="res://neighborhood.gd" id="1_x5m6a"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="1_xi4q1"]
 [ext_resource type="PackedScene" uid="uid://ltfpc6cnc0d" path="res://doggo.tscn" id="2_ra0do"]
 [ext_resource type="PackedScene" uid="uid://rnw6vjamikjk" path="res://interactable.tscn" id="3_bhmmv"]
@@ -56,6 +57,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 fog_light_color = Color(0.14214167, 0.2764351, 0.38243112, 1)
 
 [node name="Neighborhood" type="Node3D"]
+script = ExtResource("1_x5m6a")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true

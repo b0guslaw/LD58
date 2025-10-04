@@ -20,7 +20,10 @@ var yaw: float = 0.0
 var interactable_in_range: Node3D = null
 var current_interaction: Node3D = null
 
+var is_alive = true
 var trash_counter: int = 0;
+
+signal player_died
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -42,6 +45,14 @@ func _physics_process(delta: float) -> void:
 	camera_pivot.global_position = global_position
 	camera_pivot.global_rotation.y = yaw
 	camera_pivot.global_rotation.x = pitch
+	
+	if not is_alive:
+		velocity.x = lerp(velocity.x, 0.0, friction * delta)
+		velocity.z = lerp(velocity.z, 0.0, friction * delta)
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+		move_and_slide()
+		return # skip input processing
 	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_back", "move_forward")
 	var move_dir = Vector3.ZERO
@@ -76,6 +87,15 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_force
 	
 	move_and_slide()
+
+func take_damage(attacker_pos: Vector3, knockback_power: float):
+	if is_alive:
+		print("player caught by doggo")
+		player_died.emit()
+		
+	is_alive = false
+	var knockback_dir = (global_position - attacker_pos).normalized()
+	velocity = knockback_dir * knockback_power
 
 func start_interaction(interactable: Node3D) -> void:
 	current_interaction = interactable

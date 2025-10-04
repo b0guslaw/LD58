@@ -12,7 +12,9 @@ radius = 1.5558742
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 3
 script = ExtResource("1_4flbx")
+speed = 6.0
 acceleration = 1.0
+friction = 12.0
 mouse_sensitivity = 0.6
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
