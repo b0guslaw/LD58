@@ -126,6 +126,9 @@ func chase(delta):
 		velocity.x = direction.x * chase_speed
 		velocity.z = direction.z * chase_speed
 		smooth_look_at(direction, delta)
+		if check_if_stuck(delta, chase_speed):
+			last_known_pos = global_position
+			search_timer = 0.0
 	else:
 		velocity = Vector3.ZERO
 		search_timer -= delta
@@ -180,24 +183,27 @@ func wander(delta):
 		return
 	
 	direction = direction.normalized()
-	var expected_movement = wander_speed * delta
 	velocity.x = direction.x * wander_speed
 	velocity.z = direction.z * wander_speed
 	
-	var distance_moved = global_position.distance_to(last_position)
-	
-	if distance_moved < expected_movement * stuck_threshold: #moving slower than normal
-		stuck_timer += delta
-		if stuck_timer > stuck_timeout:
-			print("doggo got stuck, picking new target")
-			choose_new_wander_target()
-			stuck_timer = 0.0
-	else:
-		stuck_timer = 0.0
-		
-	last_position = global_position
+	if check_if_stuck(delta, wander_speed):
+		choose_new_wander_target()
 	
 	smooth_look_at(direction, delta)
+
+func check_if_stuck(delta, expected_speed: float) -> bool:
+	var expected_movement = expected_speed * delta
+	var distance_moved = global_position.distance_to(last_position)
+	if distance_moved < expected_movement * stuck_threshold:
+		stuck_timer += delta
+		if stuck_timer > stuck_timeout:
+			print("Dog got stuck.")
+			stuck_timer = 0.0
+			return true
+	else:
+		stuck_timer = 0.0
+	last_position = global_position
+	return false
 
 func smooth_look_at(target_direction: Vector3, delta: float):
 	if target_direction.length() < 0.01:
