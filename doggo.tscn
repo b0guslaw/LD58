@@ -27,10 +27,7 @@ albedo_color = Color(0.7014084, 0.73, 0.38689998, 0.25490198)
 
 [node name="Doggo" type="CharacterBody3D"]
 script = ExtResource("1_ew3t6")
-detection_angle = 15.0
-wander_speed = 3.0
-wander_range = 25.0
-wander_pause_time = 1.0
+stuck_threshold = 0.2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.33369958, 0)
@@ -51,7 +48,7 @@ collision_mask = 3
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_vision_cone"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.35555327, 5)
-radius = 2.679492
+radius = 10.0
 height = 10.0
 cone = true
 material = SubResource("StandardMaterial3D_rthgg")
@@ -60,7 +57,7 @@ material = SubResource("StandardMaterial3D_rthgg")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_wander_range"]
 top_level = true
-radius = 25.0
+radius = 10.0
 height = 0.24816895
 sides = 16
 material = SubResource("StandardMaterial3D_ew3t6")

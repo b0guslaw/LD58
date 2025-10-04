@@ -26,7 +26,7 @@ var wander_target: Vector3
 var debug_wander_target: CSGCylinder3D
 var wander_timer: float = 0.0
 var is_wandering = false
-var last_position: Vector3 = Vector3.ZERO
+var last_position: Vector3
 var stuck_timer: float = 0.0
 
 var raycast: RayCast3D
@@ -43,6 +43,7 @@ func _ready():
 	debug_wander_target.top_level = true
 	player = get_tree().get_first_node_in_group("player")
 	start_position = global_position
+	last_position = start_position
 	choose_new_wander_target()
 	update_debug_tools()
 
@@ -129,18 +130,9 @@ func wander(delta):
 	if wander_timer > 0: # waiting
 		wander_timer -= delta
 		velocity = Vector3.ZERO
+		stuck_timer = 0
+		last_position = global_position
 		return
-		
-	if global_position.distance_to(last_position) < stuck_threshold:
-		stuck_timer += delta
-		if stuck_timer > stuck_timeout:
-			print("doggo got stuck, picking new target")
-			choose_new_wander_target()
-			stuck_timer = 0.0
-	else:
-		stuck_timer = 0.0
-		
-	last_position = global_position
 		
 	#move toward target
 	var direction = (wander_target - global_position)
@@ -153,8 +145,22 @@ func wander(delta):
 		return
 	
 	direction = direction.normalized()
+	var expected_movement = wander_speed * delta
 	velocity.x = direction.x * wander_speed
 	velocity.z = direction.z * wander_speed
+	
+	var distance_moved = global_position.distance_to(last_position)
+	
+	if distance_moved < expected_movement * stuck_threshold: #moving slower than normal
+		stuck_timer += delta
+		if stuck_timer > stuck_timeout:
+			print("doggo got stuck, picking new target")
+			choose_new_wander_target()
+			stuck_timer = 0.0
+	else:
+		stuck_timer = 0.0
+		
+	last_position = global_position
 	
 	if direction.length() > 0:
 		look_at(global_position - direction, Vector3.UP)
