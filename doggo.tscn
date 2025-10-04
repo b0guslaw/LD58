@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://ltfpc6cnc0d"]
+
+[ext_resource type="Script" uid="uid://bxkcyuceyoupn" path="res://doggo.gd" id="1_ew3t6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i62aq"]
+radius = 0.33
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ubf87"]
+radius = 0.33
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjuh0"]
+albedo_color = Color(0.14, 0.050400004, 0.050400004, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rthgg"]
+transparency = 4
+albedo_color = Color(1, 0.01999998, 0.01999998, 0.5647059)
+
+[node name="Doggo" type="CharacterBody3D"]
+script = ExtResource("1_ew3t6")
+detection_range = 7.32
+detection_angle = 23.19
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.33369958, 0)
+shape = SubResource("CapsuleShape3D_i62aq")
+debug_color = Color(0, 0.5950001, 0.7, 0.69411767)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.33369958, 0)
+mesh = SubResource("CapsuleMesh_ubf87")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjuh0")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2788539, 0.399777)
+target_position = Vector3(0, 0, 10)
+collision_mask = 3
+
+[node name="debug_vision_cone" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_vision_cone"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.35555327, 3.66)
+radius = 3.1358438
+height = 7.32
+cone = true
+material = SubResource("StandardMaterial3D_rthgg")
