@@ -20,6 +20,7 @@ var yaw: float = 0.0
 var interactable_in_range: Node3D = null
 var current_interaction: Node3D = null
 
+var is_alive = true
 var trash_counter: int = 0;
 
 func _ready() -> void:
@@ -42,6 +43,14 @@ func _physics_process(delta: float) -> void:
 	camera_pivot.global_position = global_position
 	camera_pivot.global_rotation.y = yaw
 	camera_pivot.global_rotation.x = pitch
+	
+	if not is_alive:
+		velocity.x = lerp(velocity.x, 0.0, friction * delta)
+		velocity.z = lerp(velocity.z, 0.0, friction * delta)
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+		move_and_slide()
+		return # skip input processing
 	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_back", "move_forward")
 	var move_dir = Vector3.ZERO
@@ -76,6 +85,21 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_force
 	
 	move_and_slide()
+
+func take_damage(attacker_pos: Vector3, knockback_power: float):
+	#if not is_alive:
+		#return
+	is_alive = false
+	print("player caught by doggo")
+	
+	var knockback_dir = (global_position - attacker_pos).normalized()
+	velocity = knockback_dir * knockback_power
+	
+	await get_tree().create_timer(2).timeout
+	reset_game()
+
+func reset_game():
+	get_tree().reload_current_scene()
 
 func start_interaction(interactable: Node3D) -> void:
 	current_interaction = interactable
