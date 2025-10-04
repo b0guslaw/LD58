@@ -1,6 +1,7 @@
 @tool
 extends CharacterBody3D
 
+@export var rotation_speed_rads = 5.0
 @export var detection_range = 10.0:
 	set(value):
 		detection_range = value
@@ -124,15 +125,15 @@ func chase(delta):
 		direction = direction.normalized()
 		velocity.x = direction.x * chase_speed
 		velocity.z = direction.z * chase_speed
-		look_at(global_position - direction, Vector3.UP)
+		smooth_look_at(direction, delta)
 	else:
 		velocity = Vector3.ZERO
 		search_timer -= delta
 		if search_timer <= 0:
 			var random_angle = randf() * TAU
 			search_direction = Vector3(cos(random_angle), 0, sin(random_angle))
-			look_at(global_position - search_direction, Vector3.UP)
 			search_timer = chase_rotate_time
+		smooth_look_at(search_direction, delta)
 
 func choose_new_wander_target():
 	var rand_angle = randf() * TAU
@@ -196,5 +197,14 @@ func wander(delta):
 		
 	last_position = global_position
 	
-	if direction.length() > 0:
-		look_at(global_position - direction, Vector3.UP)
+	smooth_look_at(direction, delta)
+
+func smooth_look_at(target_direction: Vector3, delta: float):
+	if target_direction.length() < 0.01:
+		return
+	target_direction = target_direction.normalized()
+	var current_forward = global_transform.basis.z
+	var angle = current_forward.signed_angle_to(target_direction, Vector3.UP)
+	var max_rotation = rotation_speed_rads * delta
+	angle = clamp(angle, -max_rotation, max_rotation)
+	rotate_y(angle)
