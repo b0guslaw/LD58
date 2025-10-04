@@ -24,26 +24,6 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	yaw = camera_pivot.global_rotation.y
 	pitch = camera_pivot.global_rotation.x
-	
-	var interaction_area = $Interaction
-	if interaction_area:
-		print("Found interaction area!")
-		print("Interaction area position: ", interaction_area.global_position)
-		
-		# Check the collision shape
-		var collision_shape = interaction_area.get_node("CollisionShape3D")
-		if collision_shape:
-			print("Collision shape exists!")
-			print("Shape: ", collision_shape.shape)
-			if collision_shape.shape is SphereShape3D:
-				print("Sphere radius: ", collision_shape.shape.radius)
-			print("Shape disabled: ", collision_shape.disabled)
-		else:
-			print("ERROR: No CollisionShape3D found!")
-
-# Add this debug function
-func _on_area_entered_debug(area: Area3D) -> void:
-	print("Area entered: ", area.name)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -51,27 +31,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		pitch -= event.relative.y * mouse_sensitivity * 0.01
 		pitch = clamp(pitch, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
 	
-	# Debug print
-	if event.is_action_pressed("interact"):
-		print("F key pressed!")
-		print("=== Checking for interactables in scene ===")
-		var interactables = get_tree().get_nodes_in_group("interactables")
-		print("Found ", interactables.size(), " interactables:")
-		for obj in interactables:
-			print("  - ", obj.name, " at position: ", obj.global_position)
-		print("Player position: ", global_position)
-	
 	if event.is_action_pressed("interact") and interactable_in_range != null and current_interaction == null:
 		start_interaction(interactable_in_range)
 
 func _physics_process(delta: float) -> void:
 	camera_pivot.global_rotation.y = yaw
 	camera_pivot.global_rotation.x = pitch
-	
-	var interaction_area = $Interaction
-	var overlapping = interaction_area.get_overlapping_bodies()
-	if overlapping.size() > 0:
-		print("Overlapping bodies: ", overlapping)
 	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_back", "move_forward")
 	var move_dir = Vector3.ZERO
@@ -137,7 +102,7 @@ func _on_interaction_body_entered(body: Node3D) -> void:
 	
 	if body.is_in_group("interactables"):
 		interactable_in_range = body
-		print("✓ Interactable set to: ", interactable_in_range.name)
+		print("Interactable set to: ", interactable_in_range.name)
 
 func _on_interaction_body_exited(body: Node3D) -> void:
 	print("=== BODY EXITED ===")
