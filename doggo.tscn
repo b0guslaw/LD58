@@ -27,7 +27,9 @@ albedo_color = Color(0.7014084, 0.73, 0.38689998, 0.25490198)
 
 [node name="Doggo" type="CharacterBody3D"]
 script = ExtResource("1_ew3t6")
-stuck_threshold = 0.2
+detection_range = 20.0
+detection_angle = 40.0
+wander_range = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.33369958, 0)
@@ -41,15 +43,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vjuh0")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2788539, 0.399777)
-target_position = Vector3(22.908134, -0.2788539, -10.199244)
+target_position = Vector3(-0.83472604, 0, -2.3614433)
 collision_mask = 3
 
 [node name="debug_vision_cone" type="Node3D" parent="."]
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_vision_cone"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.35555327, 5)
-radius = 10.0
-height = 10.0
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.35555327, 10)
+radius = 16.781992
+height = 20.0
 cone = true
 material = SubResource("StandardMaterial3D_rthgg")
 
@@ -57,7 +59,7 @@ material = SubResource("StandardMaterial3D_rthgg")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_wander_range"]
 top_level = true
-radius = 10.0
+radius = 20.0
 height = 0.24816895
 sides = 16
 material = SubResource("StandardMaterial3D_ew3t6")
@@ -65,7 +67,7 @@ material = SubResource("StandardMaterial3D_ew3t6")
 [node name="debug_wander_target" type="Node3D" parent="."]
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_wander_target"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.908134, 0, -9.799466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83472604, 0.2788539, -1.9616663)
 top_level = true
 radius = 0.15
 height = 43.736

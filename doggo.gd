@@ -9,6 +9,9 @@ extends CharacterBody3D
 	set(value):
 		detection_angle = value
 		update_debug_tools()
+@export var chase_speed = 4.0
+@export var chase_give_up_time = 7.0
+@export var chase_rotate_time = 1.0
 @export var wander_speed = 2.0
 @export var wander_range = 10.0: #raidus of wander from start pos
 	set(value):
@@ -33,6 +36,10 @@ var raycast: RayCast3D
 var debug_cone: CSGCylinder3D
 var player: Node3D
 var can_see_player = false
+var chase_timer: float = 0.0
+var search_timer: float = 0.0
+var search_direction: Vector3
+var last_known_pos: Vector3
 
 func _ready():
 	raycast = $RayCast3D
@@ -68,11 +75,20 @@ func _physics_process(delta):
 	can_see_player = check_player_seen()
 	
 	if can_see_player:
-		print("SPOTTED")
-		# TODO chase
+		chase_timer = chase_give_up_time
+		search_timer = 0.0
+		last_known_pos = player.global_position
+	
+	if chase_timer > 0:
+		if not can_see_player:
+			chase_timer -= delta
+		if chase_timer > 0:
+			chase(delta)
+		else:
+			velocity = Vector3.ZERO
 	else:
 		wander(delta)
-		
+	
 	move_and_slide()
 
 func check_player_seen() -> bool:
@@ -99,6 +115,24 @@ func check_player_seen() -> bool:
 		return hit.is_in_group("player")
 	
 	return false
+
+func chase(delta):
+	var direction = (last_known_pos - global_position)
+	direction.y = 0
+	
+	if direction.length() > wander_target_threshold:
+		direction = direction.normalized()
+		velocity.x = direction.x * chase_speed
+		velocity.z = direction.z * chase_speed
+		look_at(global_position - direction, Vector3.UP)
+	else:
+		velocity = Vector3.ZERO
+		search_timer -= delta
+		if search_timer <= 0:
+			var random_angle = randf() * TAU
+			search_direction = Vector3(cos(random_angle), 0, sin(random_angle))
+			look_at(global_position - search_direction, Vector3.UP)
+			search_timer = chase_rotate_time
 
 func choose_new_wander_target():
 	var rand_angle = randf() * TAU
