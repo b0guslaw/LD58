@@ -23,6 +23,8 @@ var current_interaction: Node3D = null
 var is_alive = true
 var trash_counter: int = 0;
 
+signal player_died
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	yaw = camera_pivot.global_rotation.y
@@ -87,19 +89,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func take_damage(attacker_pos: Vector3, knockback_power: float):
-	#if not is_alive:
-		#return
+	if is_alive:
+		print("player caught by doggo")
+		player_died.emit()
+		
 	is_alive = false
-	print("player caught by doggo")
-	
 	var knockback_dir = (global_position - attacker_pos).normalized()
 	velocity = knockback_dir * knockback_power
-	
-	await get_tree().create_timer(2).timeout
-	reset_game()
-
-func reset_game():
-	get_tree().reload_current_scene()
 
 func start_interaction(interactable: Node3D) -> void:
 	current_interaction = interactable
