@@ -17,11 +17,33 @@ extends CharacterBody3D
 
 var pitch: float = 0.0
 var yaw: float = 0.0
+var interactable_in_range: Node3D = null
+var current_interaction: Node3D = null
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	yaw = camera_pivot.global_rotation.y
 	pitch = camera_pivot.global_rotation.x
+	
+	var interaction_area = $Interaction
+	if interaction_area:
+		print("Found interaction area!")
+		print("Interaction area position: ", interaction_area.global_position)
+		
+		# Check the collision shape
+		var collision_shape = interaction_area.get_node("CollisionShape3D")
+		if collision_shape:
+			print("Collision shape exists!")
+			print("Shape: ", collision_shape.shape)
+			if collision_shape.shape is SphereShape3D:
+				print("Sphere radius: ", collision_shape.shape.radius)
+			print("Shape disabled: ", collision_shape.disabled)
+		else:
+			print("ERROR: No CollisionShape3D found!")
+
+# Add this debug function
+func _on_area_entered_debug(area: Area3D) -> void:
+	print("Area entered: ", area.name)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -29,20 +51,40 @@ func _unhandled_input(event: InputEvent) -> void:
 		pitch -= event.relative.y * mouse_sensitivity * 0.01
 		pitch = clamp(pitch, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
 	
+	# Debug print
+	if event.is_action_pressed("interact"):
+		print("F key pressed!")
+		print("=== Checking for interactables in scene ===")
+		var interactables = get_tree().get_nodes_in_group("interactables")
+		print("Found ", interactables.size(), " interactables:")
+		for obj in interactables:
+			print("  - ", obj.name, " at position: ", obj.global_position)
+		print("Player position: ", global_position)
+	
+	if event.is_action_pressed("interact") and interactable_in_range != null and current_interaction == null:
+		start_interaction(interactable_in_range)
 
 func _physics_process(delta: float) -> void:
 	camera_pivot.global_rotation.y = yaw
 	camera_pivot.global_rotation.x = pitch
-
+	
+	var interaction_area = $Interaction
+	var overlapping = interaction_area.get_overlapping_bodies()
+	if overlapping.size() > 0:
+		print("Overlapping bodies: ", overlapping)
+	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_back", "move_forward")
-
 	var move_dir = Vector3.ZERO
+	
 	if input_dir.length() > 0:
 		var cam_forward = Vector3(sin(yaw), 0, cos(yaw))
 		var cam_right = Vector3(cos(yaw), 0, -sin(yaw))
-
 		move_dir = (cam_right * input_dir.x - cam_forward * input_dir.y).normalized()
-
+		
+		# Interrupt interaction if player moves
+		if current_interaction != null:
+			interrupt_interaction()
+	
 	var target_velocity = move_dir * speed
 	
 	if move_dir.length() > 0:
@@ -64,3 +106,47 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_force
 	
 	move_and_slide()
+
+func start_interaction(interactable: Node3D) -> void:
+	current_interaction = interactable
+	print("Start interaction")
+	if interactable.has_method("start_interaction"):
+		interactable.start_interaction(self)
+	print("Started interacting with: ", interactable.name)
+
+func interrupt_interaction() -> void:
+	if current_interaction != null:
+		if current_interaction.has_method("cancel_interaction"):
+			current_interaction.cancel_interaction()
+		print("Interrupted interaction with: ", current_interaction.name)
+		current_interaction = null
+
+func on_interaction_complete(interactable: Node3D) -> void:
+	# Called by the interactable when interaction finishes
+	if current_interaction == interactable:
+		current_interaction = null
+		print("Completed interaction with: ", interactable.name)
+		# TODO inventory trash logig
+
+func _on_interaction_body_entered(body: Node3D) -> void:
+	print("=== BODY ENTERED ===")
+	print("Body name: ", body.name)
+	print("Body type: ", body.get_class())
+	print("Is in 'interactables' group: ", body.is_in_group("interactables"))
+	print("===================")
+	
+	if body.is_in_group("interactables"):
+		interactable_in_range = body
+		print("✓ Interactable set to: ", interactable_in_range.name)
+
+func _on_interaction_body_exited(body: Node3D) -> void:
+	print("=== BODY EXITED ===")
+	print("Body name: ", body.name)
+	print("===================")
+	
+	if body == interactable_in_range:
+		interactable_in_range = null
+		print("✓ Interactable cleared")
+		
+		if body == current_interaction:
+			interrupt_interaction()

@@ -6,7 +6,8 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_4flbx"]
+radius = 5.0
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -18,11 +19,12 @@ mesh = SubResource("CapsuleMesh_sh265")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_4flbx")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Interaction" type="Area3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("CapsuleShape3D_onrkg")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction" groups=["player"]]
+shape = SubResource("SphereShape3D_4flbx")
 
 [node name="CameraPivot" type="Node3D" parent="."]
 
@@ -34,5 +36,5 @@ spring_length = 4.0
 transform = Transform3D(1, 0, 0, 0, 0.96592605, 0.258819, 0, -0.258819, 0.96592605, 0, 1.8345182, 0.21064591)
 current = true
 
-[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
-[connection signal="body_shape_exited" from="Area3D" to="." method="_on_area_3d_body_shape_exited"]
+[connection signal="body_entered" from="Interaction" to="." method="_on_interaction_body_entered"]
+[connection signal="body_exited" from="Interaction" to="." method="_on_interaction_body_exited"]
