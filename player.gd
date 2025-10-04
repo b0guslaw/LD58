@@ -1,64 +1,66 @@
 extends CharacterBody3D
 
-@export var speed: float = 5.0
-@export var jump_force: float = 4.5
-@export var gravity: float = 9.8
-@export var interact_key := "interact"
+# --- Movement Settings ---
+@export var speed: float = 10.0
+@export var acceleration: float = 30.0
+@export var friction: float = 15.0
+@export var jump_force: float = 6.0
+@export var gravity: float = 14.0
+
+# --- Camera Settings ---
+@export var mouse_sensitivity: float = 0.8
+@export var min_pitch: float = -80.0
+@export var max_pitch: float = 80.0
+
 @onready var camera_pivot = $CameraPivot
 @onready var spring_arm = $CameraPivot/SpringArm3D
 
-var interactable_in_range: Area3D = null
-var mouse_sensitivity: float = 0.3
-var vertical_angle: float = 0.0
-var horizontal_angle: float = 0.0
+var pitch: float = 0.0
+var yaw: float = 0.0
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	yaw = camera_pivot.global_rotation.y
+	pitch = camera_pivot.global_rotation.x
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		horizontal_angle -= event.relative.x * mouse_sensitivity
-		vertical_angle -= event.relative.y * mouse_sensitivity
-		vertical_angle = clamp(vertical_angle, -80.0, 80.0)
-		camera_pivot.rotation_degrees = Vector3(vertical_angle, horizontal_angle, 0)
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		yaw -= event.relative.x * mouse_sensitivity * 0.01
+		pitch -= event.relative.y * mouse_sensitivity * 0.01
+		pitch = clamp(pitch, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
+	
 
 func _physics_process(delta: float) -> void:
-	var input_dir = Vector3.ZERO
+	camera_pivot.global_rotation.y = yaw
+	camera_pivot.global_rotation.x = pitch
 
-	if Input.is_action_pressed("move_forward"):
-		input_dir.z += 1
-	if Input.is_action_pressed("move_back"):
-		input_dir.z -= 1
-	if Input.is_action_pressed("move_left"):
-		input_dir.x -= 1
-	if Input.is_action_pressed("move_right"):
-		input_dir.x += 1
+	var input_dir = Input.get_vector("move_left", "move_right", "move_back", "move_forward")
 
-	if Input.is_action_just_pressed(interact_key) and interactable_in_range:
-		interactable_in_range.interact()
+	var move_dir = Vector3.ZERO
+	if input_dir.length() > 0:
+		var cam_forward = Vector3(sin(yaw), 0, cos(yaw))
+		var cam_right = Vector3(cos(yaw), 0, -sin(yaw))
 
-	input_dir = input_dir.normalized()
+		move_dir = (cam_right * input_dir.x - cam_forward * input_dir.y).normalized()
 
-	var cam = get_viewport().get_camera_3d()
-	if cam:
-		var cam_basis = cam.global_transform.basis
-		var forward = -cam_basis.z
-		var right = cam_basis.x
-		forward.y = 0
-		right.y = 0
-		forward = forward.normalized()
-		right = right.normalized()
-		input_dir = (forward * input_dir.z + right * input_dir.x).normalized()
-
-	var velocity = self.velocity
+	var target_velocity = move_dir * speed
+	
+	if move_dir.length() > 0:
+		velocity.x = lerp(velocity.x, target_velocity.x, acceleration * delta)
+		velocity.z = lerp(velocity.z, target_velocity.z, acceleration * delta)
+		
+		var target_rotation = atan2(move_dir.x, move_dir.z)
+		rotation.y = lerp_angle(rotation.y, target_rotation, 10.0 * delta)
+	else:
+		velocity.x = lerp(velocity.x, 0.0, friction * delta)
+		velocity.z = lerp(velocity.z, 0.0, friction * delta)
+	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	else:
-		if Input.is_action_just_pressed("jump"):
-			velocity.y = jump_force
-
-	velocity.x = input_dir.x * speed
-	velocity.z = input_dir.z * speed
-
-	self.velocity = velocity
+		velocity.y = -0.01
+	
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_force
+	
 	move_and_slide()
