@@ -20,6 +20,8 @@ var yaw: float = 0.0
 var interactable_in_range: Node3D = null
 var current_interaction: Node3D = null
 
+var trash_counter: int = 0;
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	yaw = camera_pivot.global_rotation.y
@@ -77,7 +79,6 @@ func start_interaction(interactable: Node3D) -> void:
 	print("Start interaction")
 	if interactable.has_method("start_interaction"):
 		interactable.start_interaction(self)
-	print("Started interacting with: ", interactable.name)
 
 func interrupt_interaction() -> void:
 	if current_interaction != null:
@@ -90,28 +91,15 @@ func on_interaction_complete(interactable: Node3D) -> void:
 	# Called by the interactable when interaction finishes
 	if current_interaction == interactable:
 		current_interaction = null
-		print("Completed interaction with: ", interactable.name)
-		# TODO inventory trash logig
+		trash_counter += 1
+		print("Trash counter: ", trash_counter)
 
-func _on_interaction_body_entered(body: Node3D) -> void:
-	print("=== BODY ENTERED ===")
-	print("Body name: ", body.name)
-	print("Body type: ", body.get_class())
-	print("Is in 'interactables' group: ", body.is_in_group("interactables"))
-	print("===================")
-	
+func _on_interaction_body_entered(body: Node3D) -> void:	
 	if body.is_in_group("interactables"):
 		interactable_in_range = body
-		print("Interactable set to: ", interactable_in_range.name)
 
-func _on_interaction_body_exited(body: Node3D) -> void:
-	print("=== BODY EXITED ===")
-	print("Body name: ", body.name)
-	print("===================")
-	
+func _on_interaction_body_exited(body: Node3D) -> void:	
 	if body == interactable_in_range:
-		interactable_in_range = null
-		print("✓ Interactable cleared")
-		
+		interactable_in_range = null		
 		if body == current_interaction:
 			interrupt_interaction()
