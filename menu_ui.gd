@@ -8,12 +8,12 @@ func _ready() -> void:
 
 	$PlayButton.pressed.connect(_on_play_pressed)
 	$QuitButton.pressed.connect(_on_quit_pressed)
+	
+	if ScreenFade:
+		await get_tree().process_frame
+		ScreenFade.fade_in()
 
 func _on_play_pressed() -> void:
-	print("Starting game...")
-	print("Level path: ", level_scene_path)
-	print("File exists: ", FileAccess.file_exists(level_scene_path))
-	print("Resource exists: ", ResourceLoader.exists(level_scene_path))
 
 	if ScreenFade:
 		ScreenFade.fade_out()
@@ -25,8 +25,6 @@ func _on_play_pressed() -> void:
 	var result = get_tree().change_scene_to_file(level_scene_path)
 	
 	if result != OK:
-		print("ERROR: Failed to load scene! Error code: ", result)
-		print("Make sure the path is correct: ", level_scene_path)
 		# Try to fade back in if it failed
 		if ScreenFade:
 			ScreenFade.fade_in()

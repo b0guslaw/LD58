@@ -5,7 +5,7 @@ extends CharacterBody3D
 # --- Movement Settings ---
 @export var speed: float = 10.0
 @export var acceleration: float = 30.0
-@export var friction: float = 15.0
+@export var friction: float = 30.0
 @export var jump_force: float = 6.0
 @export var gravity: float = 14.0
 
@@ -79,24 +79,26 @@ func _physics_process(delta: float) -> void:
 	
 	var target_velocity = move_dir * speed
 	
+	var accel = acceleration if is_on_floor() else acceleration * 0.6
+	var fric = friction if is_on_floor() else friction * 0.3
+	
 	if move_dir.length() > 0:
-		velocity.x = lerp(velocity.x, target_velocity.x, acceleration * delta)
-		velocity.z = lerp(velocity.z, target_velocity.z, acceleration * delta)
-		
-		var target_rotation = atan2(move_dir.x, move_dir.z)
-		rotation.y = lerp_angle(rotation.y, target_rotation, 10.0 * delta)
-		
-		# Play walk animation
-		if animation_player.current_animation != "ArmatureAction_001":
+		velocity.x = lerp(velocity.x, target_velocity.x, accel * delta)
+		velocity.z = lerp(velocity.z, target_velocity.z, accel * delta)
+
+		if is_on_floor():
+			var target_rotation = atan2(move_dir.x, move_dir.z)
+			rotation.y = lerp_angle(rotation.y, target_rotation, 10.0 * delta)
+
+		if is_on_floor() and animation_player.current_animation != "ArmatureAction_001":
 			animation_player.play("ArmatureAction_001")
 	else:
-		velocity.x = lerp(velocity.x, 0.0, friction * delta)
-		velocity.z = lerp(velocity.z, 0.0, friction * delta)
-		
-		# Stop animation when not moving
-		if animation_player.is_playing():
+		if is_on_floor():
+			velocity.x = lerp(velocity.x, 0.0, fric * delta)
+			velocity.z = lerp(velocity.z, 0.0, fric * delta)
+		if is_on_floor() and animation_player.is_playing():
 			animation_player.stop()
-	
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	else:
@@ -104,10 +106,6 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_force
-	
-	# experimental chase code
-	var target_fov = chase_fov if is_being_chased else normal_fov
-	camera.fov = lerp(camera.fov, target_fov, fov_lerp_speed * delta)
 	
 	move_and_slide()
 func set_being_chased(chased: bool):

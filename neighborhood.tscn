@@ -1,9 +1,99 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdtajsldlggkr"]
+[gd_scene load_steps=5 format=3 uid="uid://bdtajsldlggkr"]
 
 [ext_resource type="Script" uid="uid://7ybtcxbjcnd8" path="res://neighborhood.gd" id="1_x5m6a"]
 [ext_resource type="PackedScene" uid="uid://c5kktmnw2joak" path="res://Level_1.tscn" id="2_ra0do"]
+[ext_resource type="FontFile" uid="uid://beok78jsw35dm" path="res://BaksoSapi.otf" id="3_bhmmv"]
+[ext_resource type="Script" uid="uid://cdwyisxkkn5kh" path="res://pause_menu.gd" id="3_x5m6a"]
 
 [node name="Neighborhood" type="Node3D"]
 script = ExtResource("1_x5m6a")
 
 [node name="Level1" parent="." instance=ExtResource("2_ra0do")]
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_x5m6a")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7019608)
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -152.5
+offset_right = 150.0
+offset_bottom = 152.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="MarginContainer2" type="MarginContainer" parent="PauseMenu/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="PauseLabel" type="Label" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_bhmmv")
+theme_override_font_sizes/font_size = 48
+text = "Paused"
+
+[node name="Spacer" type="Control" parent="PauseMenu/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_bhmmv")
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="MenuButton" type="MenuButton" parent="PauseMenu/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bhmmv")
+theme_override_font_sizes/font_size = 32
+text = "Back to Menu"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bhmmv")
+theme_override_font_sizes/font_size = 32
+text = "Quit Game"
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
