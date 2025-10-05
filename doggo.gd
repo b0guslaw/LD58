@@ -1,7 +1,11 @@
 @tool
 extends CharacterBody3D
 
+@export_group("Animation Behavior")
 @export var rotation_speed_rads = 5.0
+@export_range(0.0, 2.0) var animation_blend_rate = 1.0
+
+@export_group("Detection")
 @export var detection_range = 10.0:
 	set(value):
 		detection_range = value
@@ -10,25 +14,35 @@ extends CharacterBody3D
 	set(value):
 		detection_angle = value
 		update_debug_tools()
+
+@export_group("Chase Behavior")
 @export var chase_speed = 4.0
 @export var chase_give_up_time = 7.0
 @export var chase_give_up_variance = 2.0
 @export var chase_rotate_time = 1.0
 @export var knockback_power = 10.0
+
+@export_group("Wander Behavior")
 @export var wander_speed = 2.0
 @export var wander_range = 10.0: #raidus of wander from start pos
 	set(value):
 		wander_range = value
 		update_debug_tools()
 @export var wander_target_threshold = 1.0 # how close to the target to be "there"
+@export var wander_pause_time = 2.0
+@export var wander_pause_variance = 2.0
+
+@export_group("Debug")
+@export var is_debug = true:
+	set(value):
+		is_debug = value
+		_check_debug()
+@export var stuck_timeout = 1.0
+@export var stuck_threshold = 0.1
 @export_tool_button(
 	"Reset Wander Indicator", 
 	"CSGCylinder3D"
 	) var reset_wander_debug: Callable = Callable(self, "_reset_wander_debug")
-@export var wander_pause_time = 2.0
-@export var wander_pause_variance = 2.0
-@export var stuck_timeout = 1.0
-@export var stuck_threshold = 0.1
 
 var start_position: Vector3
 var debug_range: CSGCylinder3D
@@ -49,6 +63,8 @@ var search_direction: Vector3
 var last_known_pos: Vector3
 var was_seeing_player_last_frame = false
 
+var anim_player: AnimationPlayer
+
 signal player_spotted
 signal player_lost
 
@@ -59,11 +75,22 @@ func _ready():
 	debug_range.top_level = true
 	debug_wander_target = $debug_wander_target/CSGCylinder3D
 	debug_wander_target.top_level = true
+	anim_player = $doggoModel/AnimationPlayer
+	anim_player.play("Idle", animation_blend_rate)
 	player = get_tree().get_first_node_in_group("player")
 	start_position = global_position
 	last_position = start_position
+	
+	_check_debug()
+	
 	choose_new_wander_target()
 	update_debug_tools()
+
+func _check_debug():
+	if debug_cone and debug_range and debug_wander_target:
+		debug_cone.visible = is_debug
+		debug_range.visible = is_debug
+		debug_wander_target.visible = is_debug
 
 func _reset_wander_debug():
 	start_position = global_position
@@ -151,6 +178,8 @@ func chase(delta):
 	direction.y = 0
 	
 	if direction.length() > wander_target_threshold:
+		if anim_player.current_animation != "Chase":
+			anim_player.play("Chase", animation_blend_rate)
 		direction = direction.normalized()
 		velocity.x = direction.x * chase_speed
 		velocity.z = direction.z * chase_speed
@@ -159,6 +188,8 @@ func chase(delta):
 			last_known_pos = global_position
 			search_timer = 0.0
 	else:
+		if anim_player.current_animation != "Search":
+			anim_player.play("Search", animation_blend_rate)
 		search_behavior(delta)
 
 func choose_new_wander_target():
@@ -189,12 +220,16 @@ func choose_new_wander_target():
 	
 func wander(delta):
 	if wander_timer > 0: # waiting
+		if anim_player.current_animation != "Idle":
+			anim_player.play("Idle", animation_blend_rate)
 		wander_timer -= delta
 		search_behavior(delta)
 		stuck_timer = 0
 		last_position = global_position
 		return
 		
+	if anim_player.current_animation != "Walk":
+			anim_player.play("Walk", animation_blend_rate)
 	#move toward target
 	var direction = (wander_target - global_position)
 	direction.y = 0 # stick to the ground for now...

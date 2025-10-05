@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://ltfpc6cnc0d"]
+[gd_scene load_steps=11 format=3 uid="uid://ltfpc6cnc0d"]
 
 [ext_resource type="Script" uid="uid://bxkcyuceyoupn" path="res://doggo.gd" id="1_ew3t6"]
 [ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="2_i62aq"]
+[ext_resource type="PackedScene" uid="uid://r6q1dtv81bpp" path="res://models/doggo.blend" id="2_ubf87"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i62aq"]
-radius = 0.33
-height = 1.1862793
+radius = 0.25683594
+height = 1.2444589
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ubf87"]
 render_priority = 0
@@ -35,32 +36,40 @@ albedo_color = Color(0.7014084, 0.73, 0.38689998, 0.25490198)
 
 [node name="Doggo" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_ew3t6")
+animation_blend_rate = 0.63
 detection_range = 20.0
 detection_angle = 40.0
 knockback_power = 5.0
 wander_range = 20.0
 wander_target_threshold = 0.5
 wander_pause_time = 4.0
+is_debug = false
+
+[node name="doggoModel" parent="." instance=ExtResource("2_ubf87")]
+transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, 0, -0.11201376, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.33369958, -0.028442383)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.12407238, 0.09641987)
 shape = SubResource("CapsuleShape3D_i62aq")
 debug_color = Color(0, 0.5950001, 0.7, 0.69411767)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.33369958, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_ubf87")
 surface_material_override/0 = SubResource("StandardMaterial3D_vjuh0")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2788539, 0.399777)
-target_position = Vector3(-3.303719, 0, 12.060574)
+target_position = Vector3(-6.845056, 0, -17.333162)
 collision_mask = 3
 
 [node name="debug_vision_cone" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_vision_cone"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.35555327, 10)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 10)
+visible = false
 layers = 512
 radius = 16.781992
 height = 20.0
@@ -68,9 +77,11 @@ cone = true
 material = SubResource("StandardMaterial3D_rthgg")
 
 [node name="debug_wander_range" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_wander_range"]
 top_level = true
+visible = false
 layers = 512
 radius = 20.0
 height = 0.507
@@ -78,10 +89,12 @@ sides = 16
 material = SubResource("StandardMaterial3D_ew3t6")
 
 [node name="debug_wander_target" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_wander_target"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.303719, 0.2788539, 12.460351)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.845056, 0.2788539, -16.933386)
 top_level = true
+visible = false
 layers = 512
 radius = 0.15
 height = 43.736
