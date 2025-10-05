@@ -11,9 +11,16 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.8
 @export var min_pitch: float = -80.0
 @export var max_pitch: float = 80.0
+# --- FOV experiments ---
+@export var normal_fov = 75.0
+@export var chase_fov = 82.0
+@export var fov_lerp_speed = 2.0
+@export var shake_amt_range: Vector2i = Vector2i(4,10)
+@export var shake_strength = 0.1
 
 @onready var camera_pivot = $CameraPivot
 @onready var spring_arm = $CameraPivot/SpringArm3D
+@onready var camera = $CameraPivot/SpringArm3D/Camera3D
 
 var pitch: float = 0.0
 var yaw: float = 0.0
@@ -21,6 +28,7 @@ var interactable_in_range: Node3D = null
 var current_interaction: Node3D = null
 
 var is_alive = true
+var is_being_chased = false
 var trash_counter: int = 0;
 
 signal player_died
@@ -87,7 +95,33 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_force
 	
+	# experimental chase code
+	var target_fov = chase_fov if is_being_chased else normal_fov
+	camera.fov = lerp(camera.fov, target_fov, fov_lerp_speed * delta)
+	
 	move_and_slide()
+
+func set_being_chased(chased: bool):
+	is_being_chased = chased
+	if is_being_chased:
+		apply_spot_shake()
+
+func apply_spot_shake():
+	print("shake")
+	var original_pos = camera.position
+	var shake_count = randf_range(shake_amt_range.x, shake_amt_range.y)
+
+	for i in shake_count:
+		var offset = Vector3(
+			randf_range(-shake_strength, shake_strength),
+			randf_range(-shake_strength * 0.5, shake_strength * 0.5),
+			0
+		)
+		var time = randf_range(shake_strength * 0.5, shake_strength)
+		await create_tween().tween_property(camera, "position", original_pos + offset, time).finished
+
+	# Return to center
+	create_tween().tween_property(camera, "position", original_pos, 0.1)
 
 func take_damage(attacker_pos: Vector3, knockback_power: float):
 	if is_alive:

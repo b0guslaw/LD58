@@ -31,6 +31,7 @@ movie_writer/fps=24
 player=""
 interactables=""
 interactable=""
+enemies=""
 
 [input]
 
