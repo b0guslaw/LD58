@@ -1344,17 +1344,17 @@ metadata/_edit_lock_ = true
 transform = Transform3D(-0.52829015, 0, 0.84906393, 0, 1, 0, -0.84906393, 0, -0.52829015, -6.0652995, 0.24999979, 7.467063)
 
 [node name="Doggo" parent="." instance=ExtResource("11_pqh57")]
-transform = Transform3D(-0.5134963, 0, -0.85809183, 0, 1, 0, 0.85809183, 0, -0.5134963, -102.265366, -0.072627544, 49.780323)
+transform = Transform3D(-0.5134963, 0, -0.85809183, 0, 1, 0, 0.85809183, 0, -0.5134963, -102.265366, 0.625, 49.780323)
 detection_range = 22.785
 wander_range = 50.345
 
 [node name="Doggo2" parent="." instance=ExtResource("11_pqh57")]
-transform = Transform3D(0.45675644, 0, 0.8895918, 0, 1, 0, -0.8895918, 0, 0.45675644, -54.342, 0, 39.003956)
+transform = Transform3D(0.45675644, 0, 0.8895918, 0, 1, 0, -0.8895918, 0, 0.45675644, -54.342, 0.625, 39.003956)
 
 [node name="Doggo3" parent="." instance=ExtResource("11_pqh57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.647896, 0, 87.44955)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.648, 0.625, 87.45)
 wander_range = 40.0
 
 [node name="Doggo4" parent="." instance=ExtResource("11_pqh57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.467, 0, 83.329)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.467, 0.625, 83.329)
 wander_range = 45.0
