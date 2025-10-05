@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2ubj8p3h8eo5"]
+
+[ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="1_3t5sv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qs7p3"]
+render_priority = 0
+shader = ExtResource("1_3t5sv")
+shader_parameter/albedo = Color(0.56, 0.40469334, 0.26880002, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2fht"]
+render_priority = 0
+shader = ExtResource("1_3t5sv")
+shader_parameter/albedo = Color(0.34419847, 0.6304865, 0.46628183, 1)
+shader_parameter/shading_levels = 3
+
+[node name="Tree1" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+radius = 0.304
+height = 4.5
+material = SubResource("ShaderMaterial_qs7p3")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.046275, 0)
+radius = 2.1306496
+material = SubResource("ShaderMaterial_i2fht")

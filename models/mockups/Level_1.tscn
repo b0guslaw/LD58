@@ -1,0 +1,39 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5kktmnw2joak"]
+
+[ext_resource type="PackedScene" uid="uid://cfi7eguqb7bg" path="res://models/mockups/level_foundation.tscn" id="1_tpall"]
+[ext_resource type="PackedScene" uid="uid://684js7dn5akq" path="res://models/mockups/house1.tscn" id="2_d0lcp"]
+[ext_resource type="PackedScene" uid="uid://b0m22r0yr12o3" path="res://models/mockups/house2.tscn" id="3_pqh57"]
+[ext_resource type="PackedScene" uid="uid://ctpdrf82fcnca" path="res://models/mockups/fence.tscn" id="4_b54ba"]
+[ext_resource type="PackedScene" uid="uid://bsosi6iesgmh4" path="res://models/mockups/fence_hole.tscn" id="5_73o8q"]
+[ext_resource type="PackedScene" uid="uid://bja5uhfiu8nyi" path="res://models/mockups/trashcan.tscn" id="6_7jjo7"]
+[ext_resource type="PackedScene" uid="uid://rnw6vjamikjk" path="res://interactable.tscn" id="7_0dibe"]
+[ext_resource type="PackedScene" uid="uid://c2ubj8p3h8eo5" path="res://models/mockups/tree1.tscn" id="8_wn1nx"]
+[ext_resource type="PackedScene" uid="uid://cxr7t3jemfayn" path="res://models/mockups/tree2.tscn" id="9_q2v1b"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="LevelFoundation" parent="." instance=ExtResource("1_tpall")]
+metadata/_edit_lock_ = true
+
+[node name="House1" parent="." instance=ExtResource("2_d0lcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 43)
+
+[node name="House2" parent="." instance=ExtResource("3_pqh57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 38)
+
+[node name="Fence" parent="." instance=ExtResource("4_b54ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
+
+[node name="FenceHole" parent="." instance=ExtResource("5_73o8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 11)
+
+[node name="Trashcan" parent="." instance=ExtResource("6_7jjo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 6)
+
+[node name="Interactable" parent="Trashcan" instance=ExtResource("7_0dibe")]
+
+[node name="Tree1" parent="." instance=ExtResource("8_wn1nx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5)
+
+[node name="Tree2" parent="." instance=ExtResource("9_q2v1b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -13)

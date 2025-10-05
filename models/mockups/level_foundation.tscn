@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfi7eguqb7bg"]
+
+[ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="1_0k58y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_do11j"]
+render_priority = 0
+shader = ExtResource("1_0k58y")
+shader_parameter/albedo = Color(0.5924933, 0.74, 0.5698, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0k58y"]
+render_priority = 0
+shader = ExtResource("1_0k58y")
+shader_parameter/albedo = Color(0.65, 0.5603, 0.50049996, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u75dg"]
+render_priority = 0
+shader = ExtResource("1_0k58y")
+shader_parameter/albedo = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phe45"]
+render_priority = 0
+shader = ExtResource("1_0k58y")
+shader_parameter/albedo = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/shading_levels = 3
+
+[node name="LevelFoundation" type="Node3D"]
+
+[node name="FLOOR_BORDER" type="CSGCombiner3D" parent="."]
+use_collision = true
+metadata/_edit_lock_ = true
+
+[node name="ground" type="CSGBox3D" parent="FLOOR_BORDER"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+size = Vector3(250, 0.5, 250)
+material = SubResource("ShaderMaterial_do11j")
+metadata/_edit_lock_ = true
+
+[node name="border1" type="CSGBox3D" parent="FLOOR_BORDER"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125, 2.5, 0)
+size = Vector3(0.2, 5, 250)
+material = SubResource("ShaderMaterial_0k58y")
+metadata/_edit_lock_ = true
+
+[node name="border2" type="CSGBox3D" parent="FLOOR_BORDER"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125, 2.5, 0)
+size = Vector3(0.2, 5, 250)
+material = SubResource("ShaderMaterial_0k58y")
+metadata/_edit_lock_ = true
+
+[node name="border3" type="CSGBox3D" parent="FLOOR_BORDER"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 125)
+size = Vector3(250, 5, 0.2)
+material = SubResource("ShaderMaterial_0k58y")
+metadata/_edit_lock_ = true
+
+[node name="border4" type="CSGBox3D" parent="FLOOR_BORDER"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -125)
+size = Vector3(250, 5, 0.2)
+material = SubResource("ShaderMaterial_0k58y")
+metadata/_edit_lock_ = true
+
+[node name="ROADS" type="CSGCombiner3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="ROADS"]
+radius = 35.0
+radial_segments = 16
+rings = 4
+material = SubResource("ShaderMaterial_u75dg")
+metadata/_edit_lock_ = true
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="ROADS"]
+operation = 2
+radius = 15.0
+radial_segments = 16
+rings = 4
+material = SubResource("ShaderMaterial_u75dg")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="ROADS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 77.98894)
+size = Vector3(15, 1.433, 93.87683)
+material = SubResource("ShaderMaterial_phe45")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="ROADS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -79.03136)
+size = Vector3(15, 1.433, 91.91742)
+material = SubResource("ShaderMaterial_phe45")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="ROADS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.60156, 0, 0)
+size = Vector3(92.6191, 1.433, 15)
+material = SubResource("ShaderMaterial_phe45")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="ROADS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.90169, 0, 0)
+size = Vector3(92.098076, 1.433, 15)
+material = SubResource("ShaderMaterial_phe45")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ROADS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9335022, 21.22023, -8.521393)
+operation = 2
+size = Vector3(268.3537, 42.414764, 284.17194)
+material = SubResource("ShaderMaterial_phe45")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="ROADS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.107525, 0)
+operation = 2
+size = Vector3(75, 35.394882, 75)
+material = SubResource("ShaderMaterial_phe45")
+metadata/_edit_lock_ = true

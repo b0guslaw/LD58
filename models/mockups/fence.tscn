@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctpdrf82fcnca"]
+
+[ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="1_aegjp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0m5gh"]
+render_priority = 0
+shader = ExtResource("1_aegjp")
+shader_parameter/albedo = Color(0.64, 0.5717333, 0.4352, 1)
+shader_parameter/shading_levels = 3
+
+[node name="Fence" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(5, 2, 0.2)
+material = SubResource("ShaderMaterial_0m5gh")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxr7t3jemfayn"]
+
+[ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="1_d0wt5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qs7p3"]
+render_priority = 0
+shader = ExtResource("1_d0wt5")
+shader_parameter/albedo = Color(0.56, 0.40469334, 0.26880002, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d0wt5"]
+render_priority = 0
+shader = ExtResource("1_d0wt5")
+shader_parameter/albedo = Color(0.2915, 0.53, 0.39485, 1)
+shader_parameter/shading_levels = 3
+
+[node name="Tree2" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+radius = 0.304
+height = 4.5
+material = SubResource("ShaderMaterial_qs7p3")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8637695, 0)
+radius = 2.159668
+height = 1.7275391
+cone = true
+material = SubResource("ShaderMaterial_d0wt5")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6343822, 0)
+radius = 1.6616211
+height = 1.3891602
+cone = true
+material = SubResource("ShaderMaterial_d0wt5")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5789337, 0)
+radius = 1.362793
+height = 1.9558105
+cone = true
+material = SubResource("ShaderMaterial_d0wt5")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.058322, 0)
+radius = 1.1137695
+height = 3.2026367
+cone = true
+material = SubResource("ShaderMaterial_d0wt5")

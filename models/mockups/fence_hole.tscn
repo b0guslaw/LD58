@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsosi6iesgmh4"]
+
+[ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="1_6j1ul"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0m5gh"]
+render_priority = 0
+shader = ExtResource("1_6j1ul")
+shader_parameter/albedo = Color(0.64, 0.5717333, 0.4352, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6j1ul"]
+render_priority = 0
+shader = ExtResource("1_6j1ul")
+shader_parameter/albedo = Color(0.64, 0.5717333, 0.4352, 1)
+shader_parameter/shading_levels = 3
+
+[node name="FenceHole" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(5, 2, 0.2)
+material = SubResource("ShaderMaterial_0m5gh")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7107493)
+operation = 2
+polygon = PackedVector2Array(0, 0, 0.05645159, 0.3827975, 0.26147535, 0.52707344, 0.5196531, 0.5802276, 0.7778313, 0.48910606, 0.89173245, 0.33723688, 1, 0)
+material = SubResource("ShaderMaterial_6j1ul")
