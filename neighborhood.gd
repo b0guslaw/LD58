@@ -2,9 +2,8 @@ extends Node3D
 
 @export var reset_wait_time = 2.0
 
-@onready var player = $Player
-
 var dogs_chasing = 0
+var player
 
 func _ready():
 	ScreenFade.instant_fill()
@@ -12,6 +11,8 @@ func _ready():
 	NotificationUi.reset()
 	await get_tree().process_frame
 	ScreenFade.fade_in()
+	
+	player = get_tree().get_first_node_in_group("player")
 	
 	var dogs = get_tree().get_nodes_in_group("enemies")
 	for dog in dogs:

@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var animation_player = $trash_panda/AnimationPlayer
+
 # --- Movement Settings ---
 @export var speed: float = 10.0
 @export var acceleration: float = 30.0
@@ -83,9 +85,17 @@ func _physics_process(delta: float) -> void:
 		
 		var target_rotation = atan2(move_dir.x, move_dir.z)
 		rotation.y = lerp_angle(rotation.y, target_rotation, 10.0 * delta)
+		
+		# Play walk animation
+		if animation_player.current_animation != "ArmatureAction_001":
+			animation_player.play("ArmatureAction_001")
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction * delta)
 		velocity.z = lerp(velocity.z, 0.0, friction * delta)
+		
+		# Stop animation when not moving
+		if animation_player.is_playing():
+			animation_player.stop()
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -100,7 +110,6 @@ func _physics_process(delta: float) -> void:
 	camera.fov = lerp(camera.fov, target_fov, fov_lerp_speed * delta)
 	
 	move_and_slide()
-
 func set_being_chased(chased: bool):
 	is_being_chased = chased
 	if is_being_chased:

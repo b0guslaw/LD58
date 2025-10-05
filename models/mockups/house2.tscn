@@ -1,0 +1,127 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0m22r0yr12o3"]
+
+[ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="1_secmq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwh6u"]
+render_priority = 0
+shader = ExtResource("1_secmq")
+shader_parameter/albedo = Color(0.10340001, 0.15198335, 0.22, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l71lf"]
+render_priority = 0
+shader = ExtResource("1_secmq")
+shader_parameter/albedo = Color(0.697, 0.85, 0.81175, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sse5m"]
+render_priority = 0
+shader = ExtResource("1_secmq")
+shader_parameter/albedo = Color(0.697, 0.85, 0.81175, 1)
+shader_parameter/shading_levels = 3
+
+[node name="House2" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 10)
+polygon = PackedVector2Array(-10, 0, 0, 5, 1, 5, 8, 0)
+depth = 21.0
+material = SubResource("ShaderMaterial_wwh6u")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -1.5)
+size = Vector3(18, 10, 23)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 10, -9.704712)
+operation = 2
+size = Vector3(7, 16, 9.409424)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 10, -12.409424)
+operation = 2
+size = Vector3(19, 16, 4)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40909, 2.1199036, -8.920032)
+operation = 2
+size = Vector3(6.7852783, 1.743103, 7.7817593)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01358223, 2.1199036, -11.601957)
+operation = 2
+size = Vector3(17.576294, 1.743103, 2.4179077)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7491455, 2.1305642, -12.914199)
+operation = 2
+size = Vector3(1.4311523, 1.7220488, 0.3927852)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2, -20)
+operation = 2
+size = Vector3(7, 4, 2)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.51220703, -10.5)
+operation = 2
+size = Vector3(7, 1.0244141, 11)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15014648, 0.51220703, -13)
+operation = 2
+size = Vector3(17.699707, 1.0244141, 6)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.199707, 0.51220703, -11.323975)
+operation = 2
+size = Vector3(3, 1.0244141, 2.6479492)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.448242, 3.758789, 7.9589844)
+operation = 2
+size = Vector3(6.8964844, 5, 3.9179688)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.602051, 3.756836, 8.077209)
+operation = 2
+size = Vector3(7.2041016, 3, 4.154419)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2276154, 2.1118774, 10.031174)
+operation = 2
+size = Vector3(1.4711609, 1.6929932, 0.24649048)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, 8)
+operation = 2
+size = Vector3(7, 1, 4)
+material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, 0, 10)
+polygon = PackedVector2Array(0, 1, -0.0024604797, 1.2609961, 2.0697908, -0.038711995, 1.5636129, -0.053037822)
+depth = 1.5
+material = SubResource("ShaderMaterial_sse5m")
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -4, 0, -13)
+polygon = PackedVector2Array(0, 1, -0.0024604797, 1.2609961, 2.0697908, -0.038711995, 1.5636129, -0.053037822)
+depth = 1.5
+material = SubResource("ShaderMaterial_sse5m")
