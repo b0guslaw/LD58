@@ -1,7 +1,6 @@
 extends Camera3D
 
 ## Orbiting camera for main menu
-## Attach this to a Camera3D node in your menu scene
 
 @export var orbit_center: Vector3 = Vector3(0, 5, 0)
 @export var orbit_radius: float = 25.0
@@ -13,20 +12,13 @@ var angle: float = 0.0
 
 func _ready() -> void:
 	make_current()
-	
-	print("Menu camera started orbiting")
-	print("Center: ", orbit_center)
-	print("Radius: ", orbit_radius)
-
 	update_camera_position()
 
 func _process(delta: float) -> void:
 	angle += orbit_speed * delta
-	
 	# Keep angle in 0-2PI range
 	if angle > TAU:
 		angle -= TAU
-	
 	update_camera_position()
 
 func update_camera_position() -> void:
