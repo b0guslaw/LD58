@@ -76,7 +76,6 @@ func _ready():
 	debug_wander_target = $debug_wander_target/CSGCylinder3D
 	debug_wander_target.top_level = true
 	anim_player = $doggoModel/AnimationPlayer
-	print(anim_player.get_animation_list())
 	anim_player.play("Idle", animation_blend_rate)
 	player = get_tree().get_first_node_in_group("player")
 	start_position = global_position
@@ -88,9 +87,10 @@ func _ready():
 	update_debug_tools()
 
 func _check_debug():
-	debug_cone.visible = is_debug
-	debug_range.visible = is_debug
-	debug_wander_target.visible = is_debug
+	if debug_cone and debug_range and debug_wander_target:
+		debug_cone.visible = is_debug
+		debug_range.visible = is_debug
+		debug_wander_target.visible = is_debug
 
 func _reset_wander_debug():
 	start_position = global_position
@@ -188,7 +188,6 @@ func chase(delta):
 			last_known_pos = global_position
 			search_timer = 0.0
 	else:
-		print(anim_player.current_animation)
 		if anim_player.current_animation != "Search":
 			anim_player.play("Search", animation_blend_rate)
 		search_behavior(delta)

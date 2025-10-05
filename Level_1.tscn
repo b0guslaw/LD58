@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bsosi6iesgmh4" path="res://models/mockups/fence_hole.tscn" id="5_73o8q"]
 [ext_resource type="PackedScene" uid="uid://bja5uhfiu8nyi" path="res://models/mockups/trashcan.tscn" id="6_7jjo7"]
 [ext_resource type="PackedScene" uid="uid://rnw6vjamikjk" path="res://interactable.tscn" id="7_0dibe"]
-[ext_resource type="PackedScene" uid="uid://4iwx02jhvfnt" path="res://models/mockups/street_lamp.tscn" id="8_p7bnq"]
+[ext_resource type="PackedScene" path="res://models/mockups/street_lamp.tscn" id="8_p7bnq"]
 [ext_resource type="PackedScene" uid="uid://c2ubj8p3h8eo5" path="res://models/mockups/tree1.tscn" id="8_wn1nx"]
 [ext_resource type="PackedScene" uid="uid://cxr7t3jemfayn" path="res://models/mockups/tree2.tscn" id="9_q2v1b"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="10_d0lcp"]
@@ -1354,7 +1354,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.969315, 0.020406246, 22.
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("10_d0lcp")]
-transform = Transform3D(-0.52829015, 0, 0.84906393, 0, 1, 0, -0.84906393, 0, -0.52829015, -6.0652995, 0.24999979, 7.467063)
+transform = Transform3D(0.73004305, 0, -0.6834012, 0, 1, 0, 0.6834012, 0, 0.73004305, -6.0652995, 0.24999979, 7.467063)
 
 [node name="Doggo" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(-0.5134963, 0, -0.85809183, 0, 1, 0, 0.85809183, 0, -0.5134963, -102.265366, 0.625, 49.780323)

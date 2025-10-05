@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddgm8fph5j20"]
+[gd_scene load_steps=7 format=3 uid="uid://ddgm8fph5j20"]
 
 [ext_resource type="Script" uid="uid://clscsby36ew30" path="res://camera_3d_menu.gd" id="1_jix8l"]
 [ext_resource type="PackedScene" uid="uid://bdtajsldlggkr" path="res://neighborhood.tscn" id="2_glbon"]
 [ext_resource type="Script" uid="uid://cbcqtrkaku8yh" path="res://menu_ui.gd" id="3_nlkkf"]
 [ext_resource type="FontFile" uid="uid://beok78jsw35dm" path="res://BaksoSapi.otf" id="4_qe12f"]
+
+[sub_resource type="FontVariation" id="FontVariation_jix8l"]
+base_font = ExtResource("4_qe12f")
+spacing_glyph = -10
+
+[sub_resource type="FontVariation" id="FontVariation_glbon"]
+base_font = ExtResource("4_qe12f")
+spacing_glyph = -5
 
 [node name="MainMenu" type="Node3D"]
 
@@ -26,9 +34,11 @@ offset_left = 182.0
 offset_top = 89.0
 offset_right = 960.0
 offset_bottom = 195.0
-theme_override_fonts/font = ExtResource("4_qe12f")
+theme_override_fonts/font = SubResource("FontVariation_jix8l")
 theme_override_font_sizes/font_size = 64
 text = "Some Smart Game Name"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayButton" type="Button" parent="MenuUi"]
 layout_mode = 1
@@ -39,7 +49,7 @@ offset_left = 460.0
 offset_top = 227.0
 offset_right = 687.0
 offset_bottom = 285.0
-theme_override_fonts/font = ExtResource("4_qe12f")
+theme_override_fonts/font = SubResource("FontVariation_glbon")
 theme_override_font_sizes/font_size = 32
 text = "Play"
 
@@ -49,6 +59,6 @@ offset_left = 463.0
 offset_top = 398.0
 offset_right = 697.0
 offset_bottom = 463.0
-theme_override_fonts/font = ExtResource("4_qe12f")
+theme_override_fonts/font = SubResource("FontVariation_glbon")
 theme_override_font_sizes/font_size = 32
 text = "Quit"
