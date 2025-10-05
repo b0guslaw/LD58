@@ -21,6 +21,10 @@ extends CharacterBody3D
 		wander_range = value
 		update_debug_tools()
 @export var wander_target_threshold = 1.0 # how close to the target to be "there"
+@export_tool_button(
+	"Reset Wander Indicator", 
+	"CSGCylinder3D"
+	) var reset_wander_debug: Callable = Callable(self, "_reset_wander_debug")
 @export var wander_pause_time = 2.0
 @export var wander_pause_variance = 2.0
 @export var stuck_timeout = 1.0
@@ -59,6 +63,10 @@ func _ready():
 	start_position = global_position
 	last_position = start_position
 	choose_new_wander_target()
+	update_debug_tools()
+
+func _reset_wander_debug():
+	start_position = global_position
 	update_debug_tools()
 
 func update_debug_tools():

@@ -17,6 +17,7 @@ shader_parameter/shading_levels = 3
 [node name="Trashcan" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5357666, 0)

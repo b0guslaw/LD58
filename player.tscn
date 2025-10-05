@@ -1,8 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=7 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://drlldp7l6q0o4" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="2_onrkg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3pqv"]
+render_priority = 0
+shader = ExtResource("2_onrkg")
+shader_parameter/albedo = Color(0.57, 0.57, 0.57, 1)
+shader_parameter/shading_levels = 3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+material = SubResource("ShaderMaterial_i3pqv")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 
