@@ -26,7 +26,7 @@ extends CharacterBody3D
 
 var pitch: float = 0.0
 var yaw: float = 0.0
-var interactable_in_range: Node3D = null
+var interactables_in_range: Array[Node3D] = []
 var current_interaction: Node3D = null
 
 var is_alive = true
@@ -48,9 +48,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		yaw -= event.relative.x * mouse_sensitivity * 0.01
 		pitch -= event.relative.y * mouse_sensitivity * 0.01
 		pitch = clamp(pitch, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
-	
-	if event.is_action_pressed("interact") and interactable_in_range != null and current_interaction == null:
-		start_interaction(interactable_in_range)
+
+	if event.is_action_pressed("interact") and interactables_in_range.size() > 0 and current_interaction == null:
+		start_interaction(interactables_in_range[0])
 
 func _physics_process(delta: float) -> void:
 	camera_pivot.global_position = global_position
@@ -160,13 +160,16 @@ func on_interaction_complete(interactable: Node3D) -> void:
 		current_interaction = null
 		trash_counter += 1
 		TrashUi.update_trash_ui(trash_counter)
+		interactables_in_range.erase(interactable)
 
-func _on_interaction_body_entered(body: Node3D) -> void:	
+func _on_interaction_body_entered(body: Node3D) -> void:
 	if body.is_in_group("interactables"):
-		interactable_in_range = body
+		if not interactables_in_range.has(body):
+			interactables_in_range.append(body)
 
-func _on_interaction_body_exited(body: Node3D) -> void:	
-	if body == interactable_in_range:
-		interactable_in_range = null		
+func _on_interaction_body_exited(body: Node3D) -> void:
+	if body.is_in_group("interactables"):
+		interactables_in_range.erase(body)
+		
 		if body == current_interaction:
 			interrupt_interaction()

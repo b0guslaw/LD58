@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=5 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://drlldp7l6q0o4" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://bbyoqli3uj7yj" path="res://models/trash_panda.glb" id="2_onrkg"]
@@ -31,6 +31,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction" groups=["player"]]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 shape = SubResource("SphereShape3D_4flbx")
 
 [node name="CameraPivot" type="Node3D" parent="."]

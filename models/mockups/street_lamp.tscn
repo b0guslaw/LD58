@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://4iwx02jhvfnt"]
+
+[ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="1_akbdw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ls2r7"]
+render_priority = 0
+shader = ExtResource("1_akbdw")
+shader_parameter/albedo = Color(0.29803923, 0.29803923, 0.29803923, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vw20k"]
+render_priority = 0
+shader = ExtResource("1_akbdw")
+shader_parameter/albedo = Color(0.29954746, 0.29954746, 0.29954743, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_akbdw"]
+render_priority = 0
+shader = ExtResource("1_akbdw")
+shader_parameter/albedo = Color(0.29803923, 0.29803923, 0.29803923, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovs4e"]
+render_priority = 0
+shader = ExtResource("1_akbdw")
+shader_parameter/albedo = Color(0.29803923, 0.29803923, 0.29803923, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwbrk"]
+render_priority = 0
+shader = ExtResource("1_akbdw")
+shader_parameter/albedo = Color(0.89649135, 0.90550554, 0, 1)
+shader_parameter/shading_levels = 3
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+height = 0.05
+material = SubResource("ShaderMaterial_ls2r7")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 1.7047896, 0)
+radius = 0.05
+height = 3.5
+material = SubResource("ShaderMaterial_vw20k")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.5, 0, 0, 0, -6.556708e-08, -1.5, 0, 1.5, -6.556708e-08, 0, 3.2573736, 0.38964462)
+radius = 0.02
+height = 0.5
+material = SubResource("ShaderMaterial_akbdw")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0047271103, 3.2143471, 0.7186249)
+radius = 0.124
+height = 0.025
+material = SubResource("ShaderMaterial_ovs4e")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.0025932565, 3.1903033, 0.7236344)
+radius = 0.075
+height = 0.025
+material = SubResource("ShaderMaterial_pwbrk")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.147261, 0.7901169)

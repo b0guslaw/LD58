@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddgm8fph5j20"]
+
+[ext_resource type="Script" uid="uid://clscsby36ew30" path="res://camera_3d_menu.gd" id="1_jix8l"]
+[ext_resource type="PackedScene" uid="uid://bdtajsldlggkr" path="res://neighborhood.tscn" id="2_glbon"]
+[ext_resource type="Script" uid="uid://cbcqtrkaku8yh" path="res://menu_ui.gd" id="3_nlkkf"]
+[ext_resource type="FontFile" uid="uid://beok78jsw35dm" path="res://BaksoSapi.otf" id="4_qe12f"]
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("1_jix8l")
+
+[node name="Neighborhood" parent="." instance=ExtResource("2_glbon")]
+is_menu_mode = true
+
+[node name="MenuUi" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_nlkkf")
+
+[node name="Title" type="Label" parent="MenuUi"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 89.0
+offset_right = 960.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("4_qe12f")
+theme_override_font_sizes/font_size = 64
+text = "Some Smart Game Name"
+
+[node name="PlayButton" type="Button" parent="MenuUi"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 0.2
+offset_left = 460.0
+offset_top = 227.0
+offset_right = 687.0
+offset_bottom = 285.0
+theme_override_fonts/font = ExtResource("4_qe12f")
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="MenuUi"]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 398.0
+offset_right = 697.0
+offset_bottom = 463.0
+theme_override_fonts/font = ExtResource("4_qe12f")
+theme_override_font_sizes/font_size = 32
+text = "Quit"
