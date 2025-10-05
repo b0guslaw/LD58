@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5kktmnw2joak"]
+[gd_scene load_steps=16 format=3 uid="uid://c5kktmnw2joak"]
 
 [ext_resource type="PackedScene" uid="uid://cfi7eguqb7bg" path="res://models/mockups/level_foundation.tscn" id="1_tpall"]
 [ext_resource type="PackedScene" uid="uid://684js7dn5akq" path="res://models/mockups/house1.tscn" id="2_d0lcp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bsosi6iesgmh4" path="res://models/mockups/fence_hole.tscn" id="5_73o8q"]
 [ext_resource type="PackedScene" uid="uid://bja5uhfiu8nyi" path="res://models/mockups/trashcan.tscn" id="6_7jjo7"]
 [ext_resource type="PackedScene" uid="uid://rnw6vjamikjk" path="res://interactable.tscn" id="7_0dibe"]
+[ext_resource type="PackedScene" uid="uid://4iwx02jhvfnt" path="res://models/mockups/street_lamp.tscn" id="8_p7bnq"]
 [ext_resource type="PackedScene" uid="uid://c2ubj8p3h8eo5" path="res://models/mockups/tree1.tscn" id="8_wn1nx"]
 [ext_resource type="PackedScene" uid="uid://cxr7t3jemfayn" path="res://models/mockups/tree2.tscn" id="9_q2v1b"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="10_d0lcp"]
@@ -1265,6 +1266,18 @@ shadow_caster_mask = 4294966783
 spot_range = 66.077
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
+
+[node name="Streetlamp" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9993373, -40.115902, 0, 6.892806)
+
+[node name="Streetlamp2" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9993373, -61.591656, 0, 6.892806)
+
+[node name="Streetlamp3" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9993373, -78.89084, 0, 6.892806)
+
+[node name="Streetlamp4" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9993373, -106.52782, 0, 6.892806)
 
 [node name="Interactables" type="Node3D" parent="."]
 
