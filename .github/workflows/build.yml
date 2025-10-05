@@ -2,9 +2,9 @@ name: Build Godot Game
 
 on:
   push:
-    branches: [main]
+    branches: [main, scenery]
   pull_request:
-    branches: [main]
+    branches: [main, scenery]
   workflow_dispatch:
 
 env:
