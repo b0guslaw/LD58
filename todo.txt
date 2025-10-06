@@ -1,13 +1,13 @@
 - NEED:
 	Sounds
-		- footsteps X XXXXX
-		- jump landing X X
+		- footsteps X XXXXX IN
+		- jump landing X X IN
 		- bark X long loop makes sense to me here
 		- whine (search) X XXXX
 		- sniff X X
 		- trash collecting X XXXXX
-		- trash collected X XXX
-		- "ouch" X XX
+		- trash collected X XXX IN
+		- "ouch" X XX IN
 		- "win" X X
 	Audio Stealth System
 	Menu cleanup
