@@ -82,12 +82,11 @@ light_volumetric_fog_energy = 1.085
 light_specular = 1.05
 light_cull_mask = 4294966783
 shadow_enabled = true
-shadow_bias = 0.01
-shadow_normal_bias = 0.065
+shadow_bias = 0.135
+shadow_normal_bias = 0.285
 shadow_reverse_cull_face = true
-shadow_blur = 0.0
+shadow_blur = 0.658
 shadow_caster_mask = 4294966783
-directional_shadow_mode = 0
 sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Light_Enviro"]
