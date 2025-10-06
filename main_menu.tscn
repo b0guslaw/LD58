@@ -16,6 +16,7 @@ spacing_glyph = -5
 [node name="MainMenu" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.78060496, 0, 0.62502474, 0, 1, 0, -0.62502474, 0, -0.78060496, -15.662548, 7.126687, 0)
 script = ExtResource("1_jix8l")
 
 [node name="Neighborhood" parent="." instance=ExtResource("2_glbon")]
