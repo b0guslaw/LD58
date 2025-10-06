@@ -71,9 +71,9 @@ func disable_gameplay_elements():
 	player = get_tree().get_first_node_in_group("player")
 	player.process_mode = Node.PROCESS_MODE_DISABLED
 
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	for enemy in enemies:
-		enemy.process_mode = Node.PROCESS_MODE_DISABLED
+	#var enemies = get_tree().get_nodes_in_group("enemies")
+	#for enemy in enemies:
+		#enemy.process_mode = Node.PROCESS_MODE_DISABLED
 
 	if TrashUi:
 		TrashUi.hide()

@@ -51,10 +51,6 @@ extends CharacterBody3D
 	"Reset Wander Indicator", 
 	"CSGCylinder3D"
 	) var reset_wander_debug: Callable = Callable(self, "_reset_wander_debug")
-	
-	
-@onready var wander_audio = $WanderAudio
-@onready var chase_audio = $ChaseAudio
 
 var start_position: Vector3
 var debug_range: CSGCylinder3D

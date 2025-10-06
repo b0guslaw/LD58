@@ -103,4 +103,3 @@ layout_mode = 2
 
 [node name="Win" type="AudioStreamPlayer3D" parent="Audio"]
 stream = ExtResource("5_7447b")
-bus = &"FX"

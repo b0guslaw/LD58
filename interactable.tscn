@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://rnw6vjamikjk"]
+[gd_scene load_steps=11 format=3 uid="uid://rnw6vjamikjk"]
 
 [ext_resource type="Script" uid="uid://cqgcmmk0ybj3a" path="res://interactable.gd" id="1_wh154"]
+[ext_resource type="FontFile" uid="uid://beok78jsw35dm" path="res://BaksoSapi.otf" id="2_7enov"]
 [ext_resource type="AudioStream" uid="uid://cgbx4ng0w1r8u" path="res://audio/trash_search_1.ogg" id="2_g1svq"]
 [ext_resource type="AudioStream" uid="uid://bulcwth7s0clp" path="res://audio/trash_search_2.ogg" id="3_7enov"]
 [ext_resource type="AudioStream" uid="uid://bi33efxia7v65" path="res://audio/trash_search_3.ogg" id="4_8udtt"]
@@ -36,12 +37,13 @@ visible = false
 mesh = SubResource("BoxMesh_wh154")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 1.568, 0)
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0.84063756, 0)
 billboard = 1
-font_size = 128
+no_depth_test = true
+font = ExtResource("2_7enov")
+font_size = 100
 
 [node name="TrashAudio" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_rppcx")
 volume_db = -5.063
 max_distance = 15.02
-bus = &"FX"

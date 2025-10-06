@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d4lyt46krb0hq"]
+
+[ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="1_2o426"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2o426")
+shader_parameter/albedo = Color(0.5257747, 0.5262864, 0.5138129, 1)
+shader_parameter/shading_levels = 3
