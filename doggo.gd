@@ -47,7 +47,7 @@ extends CharacterBody3D
 
 var start_position: Vector3
 var debug_range: CSGCylinder3D
-var wander_target: Vector3
+var wander_target: Vector3 = Vector3.ZERO
 var debug_wander_target: CSGCylinder3D
 var wander_timer: float = 0.0
 var is_wandering = false
@@ -83,8 +83,6 @@ func _ready():
 	last_position = start_position
 	
 	_check_debug()
-	
-	choose_new_wander_target()
 	update_debug_tools()
 
 func _check_debug():
@@ -114,6 +112,10 @@ func update_debug_tools():
 func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
+	
+	# run this first when everything is loaded
+	if wander_target == Vector3.ZERO:
+		choose_new_wander_target()
 	
 	can_see_player = check_player_seen()
 	
@@ -212,7 +214,11 @@ func choose_new_wander_target():
 	raycast.target_position = raycast.to_local(desired_target)
 	raycast.force_raycast_update()
 	
+	var manual_check = global_position.distance_to(desired_target)
+	print("Casting to: ", desired_target, " Hit: ", raycast.is_colliding())
+	
 	if raycast.is_colliding():
+		print("  Hit: ", raycast.get_collider().name, " at ", raycast.get_collision_point())
 		var hit_point = raycast.get_collision_point()
 		var direction = (hit_point - global_position).normalized()
 		wander_target = hit_point - direction * 0.5
