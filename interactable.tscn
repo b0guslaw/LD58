@@ -6,6 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://bi33efxia7v65" path="res://audio/trash_search_3.ogg" id="4_8udtt"]
 [ext_resource type="AudioStream" uid="uid://byn8ynvyyrt2v" path="res://audio/trash_search_4.ogg" id="5_epglm"]
 [ext_resource type="AudioStream" uid="uid://xuxu2xji00h4" path="res://audio/trash_search_5.ogg" id="6_pkudq"]
+[gd_scene load_steps=5 format=3 uid="uid://rnw6vjamikjk"]
+
+[ext_resource type="FontFile" uid="uid://beok78jsw35dm" path="res://BaksoSapi.otf" id="2_jcy0q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x3v40"]
 size = Vector3(0.5, 1, 0.5)
@@ -39,6 +42,7 @@ mesh = SubResource("BoxMesh_wh154")
 transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 1.259249, 0)
 billboard = 1
 no_depth_test = true
+font = ExtResource("2_jcy0q")
 font_size = 128
 
 [node name="TrashAudio" type="AudioStreamPlayer3D" parent="."]
