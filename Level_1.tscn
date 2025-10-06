@@ -1244,6 +1244,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.69708, 0, 10.841728)
 [node name="Shrubbery11" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.35114, 0, 10.841728)
 
+[node name="Shrubbery12" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.560764, 0, 41.074722)
+
 [node name="Lights" type="Node3D" parent="Environment"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Environment/Lights"]
@@ -1315,6 +1318,30 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.0
 
 [node name="Streetlamp8" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.0279236, 0, 104.65307)
+
+[node name="Streetlamp9" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.6835184, 0, -42.105717)
+
+[node name="Streetlamp10" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.6835184, 0, -61.404327)
+
+[node name="Streetlamp11" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.6835184, 0, -82.22084)
+
+[node name="Streetlamp12" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.6835184, 0, -104.0384)
+
+[node name="Streetlamp13" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.7068, 0, -6.9146457)
+
+[node name="Streetlamp14" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.34118, 0, -6.9146457)
+
+[node name="Streetlamp15" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.65109, 0, -6.9146457)
+
+[node name="Streetlamp16" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.50455, 0, -6.9146457)
 
 [node name="Streetlamp2" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
 transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9993373, -61.591656, 0, 6.892806)
@@ -1397,6 +1424,18 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.969315, 0.020406246, 22.768694)
 
 [node name="Interactable" parent="Interactables/Trashcan10" instance=ExtResource("7_0dibe")]
+metadata/_edit_lock_ = true
+
+[node name="Trashcan13" parent="Interactables" instance=ExtResource("6_7jjo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.205444, 0.020406246, -18.686369)
+
+[node name="Interactable" parent="Interactables/Trashcan13" instance=ExtResource("7_0dibe")]
+metadata/_edit_lock_ = true
+
+[node name="Trashcan14" parent="Interactables" instance=ExtResource("6_7jjo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.336136, 0.020406246, -35.668144)
+
+[node name="Interactable" parent="Interactables/Trashcan14" instance=ExtResource("7_0dibe")]
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("10_d0lcp")]
