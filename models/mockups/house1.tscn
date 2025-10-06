@@ -2,16 +2,16 @@
 
 [ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="1_2wyck"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwh6u"]
-render_priority = 0
-shader = ExtResource("1_2wyck")
-shader_parameter/albedo = Color(0.5921717, 0.41588023, 0.27660078, 1)
-shader_parameter/shading_levels = 3
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l71lf"]
 render_priority = 0
 shader = ExtResource("1_2wyck")
 shader_parameter/albedo = Color(0.89, 0.86508, 0.78319997, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwh6u"]
+render_priority = 0
+shader = ExtResource("1_2wyck")
+shader_parameter/albedo = Color(0.5921717, 0.41588023, 0.27660078, 1)
 shader_parameter/shading_levels = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sse5m"]
@@ -25,16 +25,16 @@ shader_parameter/shading_levels = 3
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
 
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+size = Vector3(20, 4, 20)
+material = SubResource("ShaderMaterial_l71lf")
+
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 10)
 polygon = PackedVector2Array(-10, 0, 0, 2, 1, 2, 10, 0)
 depth = 20.0
 material = SubResource("ShaderMaterial_wwh6u")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-size = Vector3(20, 4, 20)
-material = SubResource("ShaderMaterial_l71lf")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 5, -6.5)
@@ -49,9 +49,9 @@ size = Vector3(6.7852783, 1.743103, 2.7840576)
 material = SubResource("ShaderMaterial_l71lf")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2508545, 2.1305642, -5.90437)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2508545, 2.1234014, -6.027853)
 operation = 2
-size = Vector3(1.4311523, 1.7220488, 0.3927852)
+size = Vector3(1.4311523, 1.7363743, 0.639752)
 material = SubResource("ShaderMaterial_l71lf")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
@@ -59,6 +59,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2, -8)
 operation = 2
 size = Vector3(7, 4, 4)
 material = SubResource("ShaderMaterial_l71lf")
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 8, 0, -6)
+polygon = PackedVector2Array(0, 1, -0.0024604797, 1.2609961, 2.0697908, -0.038711995, 1.5636129, -0.053037822)
+depth = 1.5
+material = SubResource("ShaderMaterial_sse5m")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0.51220703, -4.5)
@@ -92,12 +98,6 @@ material = SubResource("ShaderMaterial_l71lf")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7, 0, 10)
-polygon = PackedVector2Array(0, 1, -0.0024604797, 1.2609961, 2.0697908, -0.038711995, 1.5636129, -0.053037822)
-depth = 1.5
-material = SubResource("ShaderMaterial_sse5m")
-
-[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="CSGCombiner3D"]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 8, 0, -6)
 polygon = PackedVector2Array(0, 1, -0.0024604797, 1.2609961, 2.0697908, -0.038711995, 1.5636129, -0.053037822)
 depth = 1.5
 material = SubResource("ShaderMaterial_sse5m")
