@@ -31,7 +31,8 @@ func _on_play_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	print("Quitting game...")
-
+	if AmbientAudio:
+		AmbientAudio.fade_out()
 	if ScreenFade:
 		ScreenFade.fade_out()
 		await ScreenFade.fade_out_complete
