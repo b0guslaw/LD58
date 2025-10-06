@@ -164,7 +164,6 @@ func apply_spot_shake():
 
 func take_damage(attacker_pos: Vector3, knockback_power: float):
 	if is_alive:
-		print("player caught by doggo")
 		player_died.emit()
 		animation_player.play("Dead", anim_blend_time)
 		ow_player.play()
@@ -175,7 +174,6 @@ func take_damage(attacker_pos: Vector3, knockback_power: float):
 
 func start_interaction(interactable: Node3D) -> void:
 	current_interaction = interactable
-	print("Start interaction")
 	if interactable.has_method("start_interaction"):
 		interactable.start_interaction(self)
 
@@ -183,7 +181,6 @@ func interrupt_interaction() -> void:
 	if current_interaction != null:
 		if current_interaction.has_method("cancel_interaction"):
 			current_interaction.cancel_interaction()
-		print("Interrupted interaction with: ", current_interaction.name)
 		current_interaction = null
 
 func on_interaction_complete(interactable: Node3D) -> void:
