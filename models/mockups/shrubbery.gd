@@ -54,5 +54,5 @@ func _on_detection_area_body_entered(body: Node3D) -> void:
 		trigger_wobble(body)
 
 func _on_detection_area_body_exited(body):
-	print("Body exit: ", body.name)
-	trigger_wobble(body)
+	if body.is_in_group("player"):
+		trigger_wobble(body)
