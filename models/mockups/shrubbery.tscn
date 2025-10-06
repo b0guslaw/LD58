@@ -28,8 +28,7 @@ shape = SubResource("BoxShape3D_1aleo")
 transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, -0.06055069, -0.010256469, 0)
 radius = 1.0
 radial_segments = 8
-rings = 4
-smooth_faces = false
+rings = 10
 material = SubResource("ShaderMaterial_b317q")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

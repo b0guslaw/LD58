@@ -63,6 +63,7 @@ material = SubResource("ShaderMaterial_0k58y")
 metadata/_edit_lock_ = true
 
 [node name="ROADS" type="CSGCombiner3D" parent="."]
+use_collision = true
 metadata/_edit_lock_ = true
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="ROADS"]

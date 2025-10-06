@@ -18,6 +18,8 @@ extends CharacterBody3D
 
 @export_group("Chase Behavior")
 @export var chase_speed = 4.0
+@export var max_chase_speed = 7.0
+@export var chase_acceleration = 0.25
 @export var chase_give_up_time = 7.0
 @export var chase_give_up_variance = 2.0
 @export var chase_rotate_time = 1.0
@@ -62,6 +64,7 @@ var raycast: RayCast3D
 var debug_cone: CSGCylinder3D
 var player: Node3D
 var can_see_player = false
+var current_chase_speed = chase_speed
 var chase_timer: float = 0.0
 var search_timer: float = 0.0
 var search_direction: Vector3
@@ -201,8 +204,9 @@ func chase(delta):
 		if anim_player.current_animation != "Chase":
 			anim_player.play("Chase", animation_blend_rate)
 		direction = direction.normalized()
-		velocity.x = direction.x * chase_speed
-		velocity.z = direction.z * chase_speed
+		current_chase_speed = lerp(current_chase_speed, max_chase_speed, chase_acceleration * delta)
+		velocity.x = direction.x * current_chase_speed
+		velocity.z = direction.z * current_chase_speed
 		var rotation_dir = Vector3(direction.x, 0, direction.z)
 		smooth_look_at(rotation_dir, delta)
 		if check_if_stuck(delta, chase_speed):
@@ -211,6 +215,7 @@ func chase(delta):
 	else:
 		if anim_player.current_animation != "Search":
 			anim_player.play("Search", animation_blend_rate)
+		current_chase_speed = chase_speed
 		search_behavior(delta)
 
 func choose_new_wander_target():
