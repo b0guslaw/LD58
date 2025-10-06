@@ -10,6 +10,10 @@ extends CharacterBody3D
 @export var jump_force: float = 6.0
 @export var gravity: float = 14.0
 
+@export_category("Audio Settings")
+@export var footstep_interval = 0.4
+@export var footstep_variance = 0.1
+
 @export_category("Camera Settings")
 @export var mouse_sensitivity: float = 0.8
 @export var min_pitch: float = -80.0
@@ -25,6 +29,10 @@ extends CharacterBody3D
 @onready var camera_pivot = $CameraPivot
 @onready var spring_arm = $CameraPivot/SpringArm3D
 @onready var camera = $CameraPivot/SpringArm3D/Camera3D
+@onready var footstep_player = $AudioPlayers/FootSteps
+@onready var landing_player = $AudioPlayers/Landing
+@onready var ow_player = $AudioPlayers/Ow
+@onready var trash_get_player = $AudioPlayers/TrashGet
 
 var pitch: float = 0.0
 var yaw: float = 0.0
@@ -35,6 +43,8 @@ var is_alive = true
 var is_being_chased = false
 var trash_counter: int = 0;
 var is_hidden: bool = false
+
+var footstep_timer = 0.0
 
 signal player_died
 
@@ -94,11 +104,15 @@ func _physics_process(delta: float) -> void:
 			rotation.y = lerp_angle(rotation.y, target_rotation, 10.0 * delta)
 
 		if is_on_floor() and animation_player.current_animation != "Walk":
+			if animation_player.current_animation == "Jump":
+				landing_player.play()
 			animation_player.play("Walk", anim_blend_time)
 	else:
 		if is_on_floor():
 			velocity.x = lerp(velocity.x, 0.0, fric * delta)
 			velocity.z = lerp(velocity.z, 0.0, fric * delta)
+			if animation_player.current_animation == "Jump":
+				landing_player.play()
 			animation_player.play("Idle", anim_blend_time)
 
 	if not is_on_floor():
@@ -108,16 +122,23 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		animation_player.play("Jump", anim_blend_time)
+		footstep_player.play()
 		velocity.y = jump_force
 	
+	# audio stuff here
+	if footstep_timer <= 0 and animation_player.current_animation == "Walk":
+		footstep_player.play()
+		footstep_timer = footstep_interval + randf_range(-footstep_variance, footstep_variance)
+	footstep_timer -= delta
+	
 	move_and_slide()
+
 func set_being_chased(chased: bool):
 	is_being_chased = chased
 	if is_being_chased:
 		apply_spot_shake()
 
 func apply_spot_shake():
-	print("shake")
 	var original_pos = camera.position
 	var shake_count = randf_range(shake_amt_range.x, shake_amt_range.y)
 
@@ -138,6 +159,7 @@ func take_damage(attacker_pos: Vector3, knockback_power: float):
 		print("player caught by doggo")
 		player_died.emit()
 		animation_player.play("Dead", anim_blend_time)
+		ow_player.play()
 		
 	is_alive = false
 	var knockback_dir = (global_position - attacker_pos).normalized()
@@ -161,6 +183,7 @@ func on_interaction_complete(interactable: Node3D) -> void:
 	if current_interaction == interactable:
 		current_interaction = null
 		trash_counter += 1
+		trash_get_player.play()
 		TrashUi.update_trash_ui(trash_counter)
 		interactables_in_range.erase(interactable)
 

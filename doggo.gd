@@ -6,6 +6,11 @@ extends CharacterBody3D
 @export var gravity = 9.8
 @export_range(0.0, 2.0) var animation_blend_rate = 1.0
 
+@export_group("Audio Settings")
+@export var footstep_interval = 0.4
+@export var footstep_variance = 0.1
+@export var chase_multiplier = 0.5
+
 @export_group("Detection")
 @export var detection_range = 10.0:
 	set(value):
@@ -73,6 +78,12 @@ var was_seeing_player_last_frame = false
 
 var anim_player: AnimationPlayer
 
+var footsteps_player: AudioStreamPlayer3D
+var chase_player: AudioStreamPlayer3D
+var search_player: AudioStreamPlayer3D
+var sniff_player: AudioStreamPlayer3D
+var footstep_timer = 0.0
+
 signal player_spotted
 signal player_lost
 
@@ -89,10 +100,10 @@ func _ready():
 	start_position = global_position
 	last_position = start_position
 	
-	if wander_audio.stream:
-		wander_audio.stream.loop = true
-	if chase_audio.stream:
-		chase_audio.stream.loop = true
+	footsteps_player = $Audio/Footsteps
+	chase_player = $Audio/Chase
+	search_player = $Audio/Search
+	sniff_player = $Audio/Sniff
 	
 	_check_debug()
 	update_debug_tools()
@@ -164,7 +175,30 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
+	handle_audio(delta)
+	
 	move_and_slide()
+
+func handle_audio(delta: float):
+	#audio state machine
+	var cur_anim = anim_player.current_animation
+	if cur_anim == "Walk" or cur_anim == "Chase":
+		if footstep_timer <= 0.0:
+			footsteps_player.play()
+			footstep_timer = footstep_interval + randf_range(-footstep_variance, footstep_variance)
+	var footstep_change = delta if cur_anim != "Chase" else delta * chase_multiplier
+	footstep_timer -= footstep_change
+	if cur_anim == "Chase":
+		if not chase_player.playing:
+			chase_player.play()
+	else:
+		chase_player.stop()
+	if cur_anim == "Search":
+		if not search_player.playing:
+			search_player.play()
+	if cur_anim == "Idle":
+		if not sniff_player.playing:
+			sniff_player.play()
 
 func check_player_seen() -> bool:
 	if not player:
@@ -195,9 +229,6 @@ func check_player_seen() -> bool:
 	return false
 
 func chase(delta):
-	wander_audio.stop()
-	chase_audio.play()
-
 	var direction = (last_known_pos - global_position)
 	
 	if direction.length() > wander_target_threshold:
@@ -234,11 +265,7 @@ func choose_new_wander_target():
 	raycast.target_position = raycast.to_local(desired_target)
 	raycast.force_raycast_update()
 	
-	var manual_check = global_position.distance_to(desired_target)
-	print("Casting to: ", desired_target, " Hit: ", raycast.is_colliding())
-	
 	if raycast.is_colliding():
-		print("  Hit: ", raycast.get_collider().name, " at ", raycast.get_collision_point())
 		var hit_point = raycast.get_collision_point()
 		var direction = (hit_point - global_position).normalized()
 		wander_target = hit_point - direction * 0.5
@@ -249,9 +276,6 @@ func choose_new_wander_target():
 	update_debug_tools()
 	
 func wander(delta):
-	chase_audio.stop()
-	wander_audio.play()
-	
 	if wander_timer > 0: # waiting
 		if anim_player.current_animation != "Idle":
 			anim_player.play("Idle", animation_blend_rate)

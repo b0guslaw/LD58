@@ -1,7 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=18 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://drlldp7l6q0o4" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://cuodev85h6ldw" path="res://models/trash_panda.blend" id="2_onrkg"]
+[ext_resource type="AudioStream" uid="uid://c647m43mscxfk" path="res://audio/footstep_1.ogg" id="3_1jxqw"]
+[ext_resource type="AudioStream" uid="uid://dqvkyvn3kblj2" path="res://audio/footstep_2.ogg" id="4_dw050"]
+[ext_resource type="AudioStream" uid="uid://b4tqkik8mriu2" path="res://audio/footstep_3.ogg" id="5_b26j0"]
+[ext_resource type="AudioStream" uid="uid://bbb74rpaqtpow" path="res://audio/footstep_4.ogg" id="6_n7ghd"]
+[ext_resource type="AudioStream" uid="uid://l2qjwjgwfmob" path="res://audio/landing2.ogg" id="8_b26j0"]
+[ext_resource type="AudioStream" uid="uid://cddqnm2mqeg52" path="res://audio/landing.ogg" id="9_n7ghd"]
+[ext_resource type="AudioStream" uid="uid://dealmgql4i4pa" path="res://audio/ow_2.ogg" id="10_urp6f"]
+[ext_resource type="AudioStream" uid="uid://bqlf305p8y4s" path="res://audio/tash_get_1.ogg" id="11_bwjto"]
+[ext_resource type="AudioStream" uid="uid://dof8ayj5vhw3q" path="res://audio/tash_get_2.ogg" id="12_606se"]
+[ext_resource type="AudioStream" uid="uid://bic8c7mcqpt5p" path="res://audio/tash_get_3.ogg" id="13_u1c27"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 radius = 0.2578125
@@ -9,6 +19,30 @@ height = 1.4438477
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4flbx"]
 radius = 1.5558742
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ivps1"]
+random_pitch = 1.24
+random_volume_offset_db = 0.36
+streams_count = 4
+stream_0/stream = ExtResource("3_1jxqw")
+stream_1/stream = ExtResource("4_dw050")
+stream_2/stream = ExtResource("5_b26j0")
+stream_3/stream = ExtResource("6_n7ghd")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nvl01"]
+random_pitch = 3.44
+random_volume_offset_db = 3.64
+streams_count = 2
+stream_0/stream = ExtResource("8_b26j0")
+stream_1/stream = ExtResource("9_n7ghd")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_op7ga"]
+random_pitch = 1.78
+random_volume_offset_db = 5.97
+streams_count = 3
+stream_0/stream = ExtResource("11_bwjto")
+stream_1/stream = ExtResource("12_606se")
+stream_2/stream = ExtResource("13_u1c27")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_4flbx")
@@ -49,6 +83,31 @@ margin = 0.1
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.96592605, 0.258819, 0, -0.258819, 0.96592605, 0, 1.8345182, 0.21064591)
 current = true
+
+[node name="AudioPlayers" type="Node3D" parent="."]
+
+[node name="FootSteps" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+stream = SubResource("AudioStreamRandomizer_ivps1")
+volume_db = -0.835
+max_distance = 70.85
+bus = &"FX"
+
+[node name="Landing" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+stream = SubResource("AudioStreamRandomizer_nvl01")
+volume_db = -0.835
+max_distance = 70.85
+bus = &"FX"
+
+[node name="Ow" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+stream = ExtResource("10_urp6f")
+max_distance = 70.85
+bus = &"FX"
+
+[node name="TrashGet" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+stream = SubResource("AudioStreamRandomizer_op7ga")
+volume_db = -3.915
+max_distance = 70.85
+bus = &"FX"
 
 [connection signal="body_entered" from="Interaction" to="." method="_on_interaction_body_entered"]
 [connection signal="body_exited" from="Interaction" to="." method="_on_interaction_body_exited"]

@@ -3,6 +3,8 @@ extends Node3D
 @export var reset_wait_time = 2.0
 @export var is_menu_mode: bool = false
 
+@onready var win_audio: AudioStreamPlayer3D = $Audio/Win
+
 var dogs_chasing = 0
 var player
 
@@ -58,7 +60,7 @@ func _on_player_died():
 func _on_game_won():
 	if is_menu_mode:
 		return
-	print("yay") # set up "game won" or "game over" ui
+	win_audio.play()
 	NotificationUi.win()
 	await get_tree().create_timer(reset_wait_time).timeout
 	ScreenFade.fade_out()

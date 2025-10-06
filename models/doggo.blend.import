@@ -8263,6 +8263,13 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"black": {
+"use_external/enabled": false,
+"use_external/fallback_path": "res://new_shader_material.tres",
+"use_external/path": "uid://bs257xhtx0tj8"
+}
 }
 }
 blender/nodes/visible=0
