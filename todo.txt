@@ -1,0 +1,6 @@
+- NEED:
+	Sounds
+	Audio Stealth System
+	Menu cleanup
+	Audio settings?
+	Shaders?
