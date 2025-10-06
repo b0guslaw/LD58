@@ -2,9 +2,13 @@
 	Lamp posts dont have collision...
 	Tighten up movement (ice skates)
 	Maybe make the dogs get faster over time during chase?
+		Right now the player outruns the dogs, so they aren't a huge
+		threat all of the time.
 	Sounds
 	Audio Stealth System
 	Menu cleanup
 	Level iteration (bushes, grass?, maybe more *dawg*)
+		Bushes might have no collision for player, but collision for dog detection ray
+			so player can hide in a bush?
 	Audio settings?
 	Shaders?
