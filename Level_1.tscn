@@ -1808,7 +1808,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.969315, 0.020406246, 22.
 metadata/_edit_lock_ = true
 
 [node name="Trashcan13" parent="Interactables" instance=ExtResource("6_7jjo7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.63652, 0.020406246, -38.816647)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.17359, 0.020406246, -25.170002)
 
 [node name="Interactable" parent="Interactables/Trashcan13" instance=ExtResource("7_0dibe")]
 metadata/_edit_lock_ = true
@@ -1825,8 +1825,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.336136, 0.020406246, -35.
 [node name="Interactable" parent="Interactables/Trashcan14" instance=ExtResource("7_0dibe")]
 metadata/_edit_lock_ = true
 
+[node name="Trashcan19" parent="Interactables" instance=ExtResource("6_7jjo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.609764, 0.020406246, -88.72357)
+
+[node name="Interactable" parent="Interactables/Trashcan19" instance=ExtResource("7_0dibe")]
+metadata/_edit_lock_ = true
+
+[node name="Trashcan20" parent="Interactables" instance=ExtResource("6_7jjo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.567863, -0.014632702, -106.47782)
+
+[node name="Interactable" parent="Interactables/Trashcan20" instance=ExtResource("7_0dibe")]
+metadata/_edit_lock_ = true
+
 [node name="Trashcan16" parent="Interactables" instance=ExtResource("6_7jjo7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.878334, 0.020406246, -41.911892)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.53291, 0.020406246, -33.468834)
 
 [node name="Interactable" parent="Interactables/Trashcan16" instance=ExtResource("7_0dibe")]
 metadata/_edit_lock_ = true
@@ -1879,5 +1891,10 @@ wander_range = 45.0
 
 [node name="Doggo7" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.383232, 0.625, -112.98073)
+animation_blend_rate = 1.0
+wander_range = 45.0
+
+[node name="Doggo8" parent="." instance=ExtResource("11_pqh57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.9345, 0.625, -43.428505)
 animation_blend_rate = 1.0
 wander_range = 45.0
