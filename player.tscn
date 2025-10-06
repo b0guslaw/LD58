@@ -90,24 +90,20 @@ current = true
 stream = SubResource("AudioStreamRandomizer_ivps1")
 volume_db = -0.835
 max_distance = 70.85
-bus = &"FX"
 
 [node name="Landing" type="AudioStreamPlayer3D" parent="AudioPlayers"]
 stream = SubResource("AudioStreamRandomizer_nvl01")
 volume_db = -0.835
 max_distance = 70.85
-bus = &"FX"
 
 [node name="Ow" type="AudioStreamPlayer3D" parent="AudioPlayers"]
 stream = ExtResource("10_urp6f")
 max_distance = 70.85
-bus = &"FX"
 
 [node name="TrashGet" type="AudioStreamPlayer3D" parent="AudioPlayers"]
 stream = SubResource("AudioStreamRandomizer_op7ga")
 volume_db = -3.915
 max_distance = 70.85
-bus = &"FX"
 
 [connection signal="body_entered" from="Interaction" to="." method="_on_interaction_body_entered"]
 [connection signal="body_exited" from="Interaction" to="." method="_on_interaction_body_exited"]
