@@ -34,6 +34,7 @@ var current_interaction: Node3D = null
 var is_alive = true
 var is_being_chased = false
 var trash_counter: int = 0;
+var is_hidden: bool = false
 
 signal player_died
 
@@ -174,3 +175,9 @@ func _on_interaction_body_exited(body: Node3D) -> void:
 		
 		if body == current_interaction:
 			interrupt_interaction()
+			
+func set_hidden(hidden: bool) -> void:
+	is_hidden = hidden
+
+func is_hiding() -> bool:
+	return is_hidden

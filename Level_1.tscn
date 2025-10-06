@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5kktmnw2joak"]
+[gd_scene load_steps=17 format=3 uid="uid://c5kktmnw2joak"]
 
 [ext_resource type="PackedScene" uid="uid://cfi7eguqb7bg" path="res://models/mockups/level_foundation.tscn" id="1_tpall"]
 [ext_resource type="PackedScene" uid="uid://684js7dn5akq" path="res://models/mockups/house1.tscn" id="2_d0lcp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bsosi6iesgmh4" path="res://models/mockups/fence_hole.tscn" id="5_73o8q"]
 [ext_resource type="PackedScene" uid="uid://bja5uhfiu8nyi" path="res://models/mockups/trashcan.tscn" id="6_7jjo7"]
 [ext_resource type="PackedScene" uid="uid://rnw6vjamikjk" path="res://interactable.tscn" id="7_0dibe"]
+[ext_resource type="PackedScene" uid="uid://bm2xs3dfsc03g" path="res://models/mockups/shrubbery.tscn" id="8_ar1si"]
 [ext_resource type="PackedScene" uid="uid://4iwx02jhvfnt" path="res://models/mockups/street_lamp.tscn" id="8_p7bnq"]
 [ext_resource type="PackedScene" uid="uid://c2ubj8p3h8eo5" path="res://models/mockups/tree1.tscn" id="8_wn1nx"]
 [ext_resource type="PackedScene" uid="uid://cxr7t3jemfayn" path="res://models/mockups/tree2.tscn" id="9_q2v1b"]
@@ -1210,6 +1211,42 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113, 0, 90)
 metadata/_edit_lock_ = true
 
+[node name="Shrubbery" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.992527, 0, 26.132437)
+
+[node name="Shrubbery2" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.285467, 0, 51.490486)
+
+[node name="Shrubbery3" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.180147, 0, 81.7216)
+
+[node name="Shrubbery4" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.116653, 0, 81.7216)
+
+[node name="Shrubbery5" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.85495, 0, 69.198135)
+
+[node name="Shrubbery6" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.13969, 0, 88.074875)
+
+[node name="Shrubbery7" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.46023, 0, 60.871223)
+
+[node name="Shrubbery8" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.154305, 0, 45.43772)
+
+[node name="Shrubbery9" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.69708, 0, 68.09588)
+
+[node name="Shrubbery10" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.69708, 0, 10.841728)
+
+[node name="Shrubbery11" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.35114, 0, 10.841728)
+
+[node name="Shrubbery12" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.560764, 0, 41.074722)
+
 [node name="Lights" type="Node3D" parent="Environment"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Environment/Lights"]
@@ -1269,6 +1306,42 @@ spot_angle_attenuation = 2.1435483
 
 [node name="Streetlamp" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
 transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9993373, -40.115902, 0, 6.892806)
+
+[node name="Streetlamp5" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.0279236, 0, 48.92949)
+
+[node name="Streetlamp6" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.0279236, 0, 64.41786)
+
+[node name="Streetlamp7" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.0279236, 0, 82.72921)
+
+[node name="Streetlamp8" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.0279236, 0, 104.65307)
+
+[node name="Streetlamp9" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.6835184, 0, -42.105717)
+
+[node name="Streetlamp10" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.6835184, 0, -61.404327)
+
+[node name="Streetlamp11" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.6835184, 0, -82.22084)
+
+[node name="Streetlamp12" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.6835184, 0, -104.0384)
+
+[node name="Streetlamp13" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.7068, 0, -6.9146457)
+
+[node name="Streetlamp14" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.34118, 0, -6.9146457)
+
+[node name="Streetlamp15" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.65109, 0, -6.9146457)
+
+[node name="Streetlamp16" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.50455, 0, -6.9146457)
 
 [node name="Streetlamp2" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
 transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9993373, -61.591656, 0, 6.892806)
@@ -1353,22 +1426,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.969315, 0.020406246, 22.
 [node name="Interactable" parent="Interactables/Trashcan10" instance=ExtResource("7_0dibe")]
 metadata/_edit_lock_ = true
 
+[node name="Trashcan13" parent="Interactables" instance=ExtResource("6_7jjo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.205444, 0.020406246, -18.686369)
+
+[node name="Interactable" parent="Interactables/Trashcan13" instance=ExtResource("7_0dibe")]
+metadata/_edit_lock_ = true
+
+[node name="Trashcan14" parent="Interactables" instance=ExtResource("6_7jjo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.336136, 0.020406246, -35.668144)
+
+[node name="Interactable" parent="Interactables/Trashcan14" instance=ExtResource("7_0dibe")]
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="." instance=ExtResource("10_d0lcp")]
 transform = Transform3D(0.73004305, 0, -0.6834012, 0, 1, 0, 0.6834012, 0, 0.73004305, -6.0652995, 0.24999979, 7.467063)
 anim_blend_time = 0.121
 
 [node name="Doggo" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(-0.5134963, 0, -0.85809183, 0, 1, 0, 0.85809183, 0, -0.5134963, -102.265366, 0.625, 49.780323)
+animation_blend_rate = 1.0
 detection_range = 22.785
 wander_range = 50.345
+is_debug = true
 
 [node name="Doggo2" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(0.45675644, 0, 0.8895918, 0, 1, 0, -0.8895918, 0, 0.45675644, -54.342, 0.625, 39.003956)
+animation_blend_rate = 1.0
+is_debug = true
 
 [node name="Doggo3" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.648, 0.625, 87.45)
+animation_blend_rate = 1.0
 wander_range = 40.0
+is_debug = true
 
 [node name="Doggo4" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.467, 0.625, 83.329)
+animation_blend_rate = 1.0
 wander_range = 45.0
+is_debug = true

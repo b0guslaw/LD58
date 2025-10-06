@@ -18,6 +18,8 @@ extends CharacterBody3D
 
 @export_group("Chase Behavior")
 @export var chase_speed = 4.0
+@export var max_chase_speed = 7.0
+@export var chase_acceleration = 0.25
 @export var chase_give_up_time = 7.0
 @export var chase_give_up_variance = 2.0
 @export var chase_rotate_time = 1.0
@@ -44,6 +46,10 @@ extends CharacterBody3D
 	"Reset Wander Indicator", 
 	"CSGCylinder3D"
 	) var reset_wander_debug: Callable = Callable(self, "_reset_wander_debug")
+	
+	
+@onready var wander_audio = $WanderAudio
+@onready var chase_audio = $ChaseAudio
 
 var start_position: Vector3
 var debug_range: CSGCylinder3D
@@ -58,6 +64,7 @@ var raycast: RayCast3D
 var debug_cone: CSGCylinder3D
 var player: Node3D
 var can_see_player = false
+var current_chase_speed = chase_speed
 var chase_timer: float = 0.0
 var search_timer: float = 0.0
 var search_direction: Vector3
@@ -81,6 +88,11 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	start_position = global_position
 	last_position = start_position
+	
+	if wander_audio.stream:
+		wander_audio.stream.loop = true
+	if chase_audio.stream:
+		chase_audio.stream.loop = true
 	
 	_check_debug()
 	update_debug_tools()
@@ -163,6 +175,9 @@ func check_player_seen() -> bool:
 	if distance > detection_range:
 		return false
 		
+	if player.is_hiding():
+		return false
+		
 	var forward = global_transform.basis.z
 	var angle = rad_to_deg(forward.angle_to(to_player.normalized()))
 	
@@ -180,14 +195,18 @@ func check_player_seen() -> bool:
 	return false
 
 func chase(delta):
+	wander_audio.stop()
+	chase_audio.play()
+
 	var direction = (last_known_pos - global_position)
 	
 	if direction.length() > wander_target_threshold:
 		if anim_player.current_animation != "Chase":
 			anim_player.play("Chase", animation_blend_rate)
 		direction = direction.normalized()
-		velocity.x = direction.x * chase_speed
-		velocity.z = direction.z * chase_speed
+		current_chase_speed = lerp(current_chase_speed, max_chase_speed, chase_acceleration * delta)
+		velocity.x = direction.x * current_chase_speed
+		velocity.z = direction.z * current_chase_speed
 		var rotation_dir = Vector3(direction.x, 0, direction.z)
 		smooth_look_at(rotation_dir, delta)
 		if check_if_stuck(delta, chase_speed):
@@ -196,6 +215,7 @@ func chase(delta):
 	else:
 		if anim_player.current_animation != "Search":
 			anim_player.play("Search", animation_blend_rate)
+		current_chase_speed = chase_speed
 		search_behavior(delta)
 
 func choose_new_wander_target():
@@ -229,6 +249,9 @@ func choose_new_wander_target():
 	update_debug_tools()
 	
 func wander(delta):
+	chase_audio.stop()
+	wander_audio.play()
+	
 	if wander_timer > 0: # waiting
 		if anim_player.current_animation != "Idle":
 			anim_player.play("Idle", animation_blend_rate)
