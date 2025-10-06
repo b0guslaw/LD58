@@ -9,4 +9,5 @@ script = ExtResource("1_eufj2")
 [node name="NightSounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_w02or")
 autoplay = true
+bus = &"Music"
 parameters/looping = true

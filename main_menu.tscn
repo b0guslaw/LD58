@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddgm8fph5j20"]
+[gd_scene load_steps=10 format=3 uid="uid://ddgm8fph5j20"]
 
 [ext_resource type="Script" uid="uid://clscsby36ew30" path="res://camera_3d_menu.gd" id="1_jix8l"]
 [ext_resource type="PackedScene" uid="uid://bdtajsldlggkr" path="res://neighborhood.tscn" id="2_glbon"]
 [ext_resource type="Script" uid="uid://cbcqtrkaku8yh" path="res://menu_ui.gd" id="3_nlkkf"]
 [ext_resource type="FontFile" uid="uid://beok78jsw35dm" path="res://BaksoSapi.otf" id="4_qe12f"]
+[ext_resource type="AudioStream" uid="uid://rejce0nl10ar" path="res://audio/song_loop.mp3" id="5_glbon"]
+[ext_resource type="Script" uid="uid://d0sfso3iv88ko" path="res://menu_music.gd" id="6_nlkkf"]
+[ext_resource type="PackedScene" uid="uid://h8e7wkwlvehe" path="res://audio/audio_sliders.tscn" id="7_qe12f"]
 
 [sub_resource type="FontVariation" id="FontVariation_jix8l"]
 base_font = ExtResource("4_qe12f")
@@ -63,3 +66,13 @@ offset_bottom = 463.0
 theme_override_fonts/font = SubResource("FontVariation_glbon")
 theme_override_font_sizes/font_size = 32
 text = "Quit"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="MenuUi"]
+stream = ExtResource("5_glbon")
+volume_db = -13.66
+autoplay = true
+bus = &"Music"
+script = ExtResource("6_nlkkf")
+
+[node name="AudioSliders" parent="MenuUi" instance=ExtResource("7_qe12f")]
+layout_mode = 0

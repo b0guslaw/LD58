@@ -47,3 +47,4 @@ font_size = 100
 stream = SubResource("AudioStreamRandomizer_rppcx")
 volume_db = -5.063
 max_distance = 15.02
+bus = &"Sfx"

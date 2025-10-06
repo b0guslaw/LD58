@@ -45,7 +45,9 @@ func _on_menu_pressed() -> void:
 	get_tree().change_scene_to_file(main_menu_path)
 
 func _on_quit_pressed() -> void:
-	print("Quitting game...")
+	get_tree().paused = false
+	visible = false
+	
 	if AmbientAudio:
 		AmbientAudio.fade_out()
 	if ScreenFade:

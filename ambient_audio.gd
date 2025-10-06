@@ -4,15 +4,18 @@ extends Node3D
 
 @onready var ambience_player = $NightSounds
 
+var target_vol: float
+
 func _ready():
+	target_vol = ambience_player.volume_db
 	fade_in()
 
 func fade_in():
 	ambience_player.volume_db = -80.0
 	var tween = create_tween()
-	tween.tween_property(ambience_player, "volume_db", 0.0, fade_time)
+	tween.tween_property(ambience_player, "volume_db", target_vol, fade_time)
 
 func fade_out():
-	ambience_player.volume_db = 0.0
+	ambience_player.volume_db = target_vol
 	var tween = create_tween()
 	tween.tween_property(ambience_player, "volume_db", -80.0, fade_time)

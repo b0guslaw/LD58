@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://h8e7wkwlvehe"]
+
+[ext_resource type="Script" uid="uid://b4pgykoptoru6" path="res://audio/audio_sliders.gd" id="1_qbx1y"]
+[ext_resource type="FontFile" uid="uid://beok78jsw35dm" path="res://BaksoSapi.otf" id="2_rrnef"]
+
+[sub_resource type="FontVariation" id="FontVariation_8qtwp"]
+base_font = ExtResource("2_rrnef")
+
+[node name="AudioSliders" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qbx1y")
+
+[node name="MusicSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 488.0
+offset_right = 745.0
+offset_bottom = 585.0
+max_value = 1.0
+step = 0.1
+
+[node name="MusicLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 497.0
+offset_right = 638.0
+offset_bottom = 520.0
+theme_override_fonts/font = SubResource("FontVariation_8qtwp")
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 552.0
+offset_right = 745.0
+offset_bottom = 649.0
+max_value = 1.0
+step = 0.1
+
+[node name="SFXLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 561.0
+offset_right = 638.0
+offset_bottom = 584.0
+theme_override_fonts/font = SubResource("FontVariation_8qtwp")
+text = "SFX Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="SFXSlider" to="." method="_on_sfx_slider_value_changed"]
