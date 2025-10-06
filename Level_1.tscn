@@ -1214,6 +1214,36 @@ metadata/_edit_lock_ = true
 [node name="Shrubbery" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.992527, 0, 26.132437)
 
+[node name="Shrubbery2" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.285467, 0, 51.490486)
+
+[node name="Shrubbery3" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.180147, 0, 81.7216)
+
+[node name="Shrubbery4" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.116653, 0, 81.7216)
+
+[node name="Shrubbery5" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.85495, 0, 69.198135)
+
+[node name="Shrubbery6" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.13969, 0, 88.074875)
+
+[node name="Shrubbery7" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.46023, 0, 60.871223)
+
+[node name="Shrubbery8" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.154305, 0, 45.43772)
+
+[node name="Shrubbery9" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.69708, 0, 68.09588)
+
+[node name="Shrubbery10" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.69708, 0, 10.841728)
+
+[node name="Shrubbery11" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.35114, 0, 10.841728)
+
 [node name="Lights" type="Node3D" parent="Environment"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Environment/Lights"]
@@ -1273,6 +1303,18 @@ spot_angle_attenuation = 2.1435483
 
 [node name="Streetlamp" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
 transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9993373, -40.115902, 0, 6.892806)
+
+[node name="Streetlamp5" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.0279236, 0, 48.92949)
+
+[node name="Streetlamp6" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.0279236, 0, 64.41786)
+
+[node name="Streetlamp7" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.0279236, 0, 82.72921)
+
+[node name="Streetlamp8" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.0279236, 0, 104.65307)
 
 [node name="Streetlamp2" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
 transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9993373, -61.591656, 0, 6.892806)
@@ -1363,16 +1405,24 @@ anim_blend_time = 0.121
 
 [node name="Doggo" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(-0.5134963, 0, -0.85809183, 0, 1, 0, 0.85809183, 0, -0.5134963, -102.265366, 0.625, 49.780323)
+animation_blend_rate = 1.0
 detection_range = 22.785
 wander_range = 50.345
+is_debug = true
 
 [node name="Doggo2" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(0.45675644, 0, 0.8895918, 0, 1, 0, -0.8895918, 0, 0.45675644, -54.342, 0.625, 39.003956)
+animation_blend_rate = 1.0
+is_debug = true
 
 [node name="Doggo3" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.648, 0.625, 87.45)
+animation_blend_rate = 1.0
 wander_range = 40.0
+is_debug = true
 
 [node name="Doggo4" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.467, 0.625, 83.329)
+animation_blend_rate = 1.0
 wander_range = 45.0
+is_debug = true
