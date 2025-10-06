@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdtajsldlggkr"]
+[gd_scene load_steps=7 format=3 uid="uid://bdtajsldlggkr"]
 
 [ext_resource type="Script" uid="uid://7ybtcxbjcnd8" path="res://neighborhood.gd" id="1_x5m6a"]
 [ext_resource type="PackedScene" uid="uid://c5kktmnw2joak" path="res://Level_1.tscn" id="2_ra0do"]
 [ext_resource type="FontFile" uid="uid://beok78jsw35dm" path="res://BaksoSapi.otf" id="3_bhmmv"]
 [ext_resource type="Script" uid="uid://cdwyisxkkn5kh" path="res://pause_menu.gd" id="3_x5m6a"]
+[ext_resource type="PackedScene" uid="uid://h8e7wkwlvehe" path="res://audio/audio_sliders.tscn" id="4_o0efs"]
 [ext_resource type="AudioStream" uid="uid://dgq70yjfl1gxg" path="res://audio/win_yay.ogg" id="5_7447b"]
 
 [node name="Neighborhood" type="Node3D"]
@@ -28,6 +29,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.7019608)
+
+[node name="AudioSliders" parent="PauseMenu" instance=ExtResource("4_o0efs")]
+layout_mode = 0
 
 [node name="Panel" type="Panel" parent="PauseMenu"]
 layout_mode = 1

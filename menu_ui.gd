@@ -2,6 +2,8 @@ extends Control
 
 @export_file("*.tscn") var level_scene_path: String = "res://neighborhood.tscn"
 
+@onready var music_player = $MenuMusic
+
 func _ready() -> void:
 	
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -14,12 +16,15 @@ func _ready() -> void:
 		ScreenFade.fade_in()
 
 func _on_play_pressed() -> void:
+	if music_player:
+		music_player.fade_out()
 
 	if ScreenFade:
 		ScreenFade.fade_out()
 		# Add a timeout in case the signal doesn't fire
 		var fade_timer = get_tree().create_timer(1.5)
 		await fade_timer.timeout
+	
 
 	print("Changing to level scene...")
 	var result = get_tree().change_scene_to_file(level_scene_path)
@@ -31,7 +36,10 @@ func _on_play_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	print("Quitting game...")
-
+	if AmbientAudio:
+		AmbientAudio.fade_out()
+	if music_player:
+		music_player.fade_out()
 	if ScreenFade:
 		ScreenFade.fade_out()
 		await ScreenFade.fade_out_complete

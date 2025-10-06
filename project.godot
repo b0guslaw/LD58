@@ -15,8 +15,13 @@ run/main_scene="uid://ddgm8fph5j20"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://b3wovmnhnm1uu"
+
 [autoload]
 
+AmbientAudio="*res://ambient_audio.tscn"
 NotificationUi="*res://notification_ui.tscn"
 TrashUi="*res://trash_ui.tscn"
 ScreenFade="*res://screen_fade.tscn"

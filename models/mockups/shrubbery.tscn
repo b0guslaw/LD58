@@ -53,7 +53,7 @@ shape = SubResource("BoxShape3D_b317q")
 stream = SubResource("AudioStreamRandomizer_nir2i")
 volume_db = -7.089
 max_distance = 21.15
-bus = &"FX"
+bus = &"Sfx"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

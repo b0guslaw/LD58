@@ -133,23 +133,23 @@ material = SubResource("StandardMaterial3D_i62aq")
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_r74ia")
 volume_db = -0.74
-max_distance = 12.15
-bus = &"FX"
+max_distance = 29.9
+bus = &"Sfx"
 
 [node name="Chase" type="AudioStreamPlayer3D" parent="Audio"]
 stream = ExtResource("9_6ltiq")
 volume_db = -0.77
 max_distance = 28.2
-bus = &"FX"
+bus = &"Sfx"
 
 [node name="Search" type="AudioStreamPlayer3D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_arofi")
 volume_db = -0.77
 max_distance = 11.1
-bus = &"FX"
+bus = &"Sfx"
 
 [node name="Sniff" type="AudioStreamPlayer3D" parent="Audio"]
 stream = ExtResource("14_n1ytk")
 volume_db = -0.77
 max_distance = 10.3
-bus = &"FX"
+bus = &"Sfx"

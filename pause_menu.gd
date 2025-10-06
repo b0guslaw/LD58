@@ -45,4 +45,12 @@ func _on_menu_pressed() -> void:
 	get_tree().change_scene_to_file(main_menu_path)
 
 func _on_quit_pressed() -> void:
+	get_tree().paused = false
+	visible = false
+	
+	if AmbientAudio:
+		AmbientAudio.fade_out()
+	if ScreenFade:
+		ScreenFade.fade_out()
+		await ScreenFade.fade_out_complete
 	get_tree().quit()
