@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=18 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://drlldp7l6q0o4" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://cuodev85h6ldw" path="res://models/trash_panda.blend" id="2_onrkg"]
@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://dqvkyvn3kblj2" path="res://audio/footstep_2.ogg" id="4_dw050"]
 [ext_resource type="AudioStream" uid="uid://b4tqkik8mriu2" path="res://audio/footstep_3.ogg" id="5_b26j0"]
 [ext_resource type="AudioStream" uid="uid://bbb74rpaqtpow" path="res://audio/footstep_4.ogg" id="6_n7ghd"]
-[ext_resource type="AudioStream" uid="uid://csxgbue13pv05" path="res://audio/footstep_5.ogg" id="7_nvl01"]
 [ext_resource type="AudioStream" uid="uid://l2qjwjgwfmob" path="res://audio/landing2.ogg" id="8_b26j0"]
 [ext_resource type="AudioStream" uid="uid://cddqnm2mqeg52" path="res://audio/landing.ogg" id="9_n7ghd"]
 [ext_resource type="AudioStream" uid="uid://dealmgql4i4pa" path="res://audio/ow_2.ogg" id="10_urp6f"]
@@ -24,12 +23,11 @@ radius = 1.5558742
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ivps1"]
 random_pitch = 1.24
 random_volume_offset_db = 0.36
-streams_count = 5
+streams_count = 4
 stream_0/stream = ExtResource("3_1jxqw")
 stream_1/stream = ExtResource("4_dw050")
 stream_2/stream = ExtResource("5_b26j0")
 stream_3/stream = ExtResource("6_n7ghd")
-stream_4/stream = ExtResource("7_nvl01")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nvl01"]
 random_pitch = 3.44

@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm2xs3dfsc03g"]
+[gd_scene load_steps=10 format=3 uid="uid://bm2xs3dfsc03g"]
 
 [ext_resource type="Script" uid="uid://cd47b8rib6noe" path="res://models/mockups/shrubbery.gd" id="1_1aleo"]
 [ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="2_1aleo"]
+[ext_resource type="AudioStream" uid="uid://srt14lkw3a8c" path="res://audio/bush_1.ogg" id="3_aa7bk"]
+[ext_resource type="AudioStream" uid="uid://b72ovukm6uupc" path="res://audio/bush_2.ogg" id="4_mfett"]
+[ext_resource type="AudioStream" uid="uid://bsgb6yxptn6bx" path="res://audio/bush_3.ogg" id="5_8ykk0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1aleo"]
 
@@ -12,6 +15,14 @@ shader_parameter/albedo = Color(0.20822316, 0.398484, 0.29300752, 1)
 shader_parameter/shading_levels = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b317q"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nir2i"]
+random_pitch = 2.1
+random_volume_offset_db = 4.3
+streams_count = 3
+stream_0/stream = ExtResource("3_aa7bk")
+stream_1/stream = ExtResource("4_mfett")
+stream_2/stream = ExtResource("5_8ykk0")
 
 [node name="Shrubbery" type="Node3D"]
 script = ExtResource("1_1aleo")
@@ -38,4 +49,11 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_b317q")
 
+[node name="BushSound" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_nir2i")
+volume_db = -7.089
+max_distance = 21.15
+bus = &"FX"
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

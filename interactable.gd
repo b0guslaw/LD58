@@ -9,6 +9,7 @@ var interacting_player: Node3D = null
 var can_loot: bool = true
 
 @onready var timer_label: Label3D = $Label3D
+@onready var trash_audio: AudioStreamPlayer3D = $TrashAudio
 
 func _ready() -> void:
 	interaction_timer = Timer.new()
@@ -46,6 +47,7 @@ func start_interaction(player: Node3D) -> void:
 	
 	interacting_player = player
 	interaction_timer.start(interaction_time)
+	trash_audio.play()
 	
 	if timer_label:
 		timer_label.visible = true
@@ -54,6 +56,7 @@ func start_interaction(player: Node3D) -> void:
 
 func cancel_interaction() -> void:
 	interaction_timer.stop()
+	trash_audio.stop()
 	interacting_player = null
 	
 	if timer_label:

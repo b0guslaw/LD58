@@ -4,6 +4,8 @@ extends Node3D
 @export var wobble_speed: float = 25.0
 @export var wobble_duration: float = 0.4 
 
+@onready var bush_audio: AudioStreamPlayer3D = $BushSound
+
 var original_rotation: Vector3
 var wobble_time: float = 0.0
 var wobble_direction: Vector3 = Vector3.ZERO
@@ -44,7 +46,13 @@ func trigger_wobble(player: Node3D) -> void:
 	wobble_direction = direction_from_player
 	wobble_time = 0.0
 	is_wobbling = true
+	
+	bush_audio.play()
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		trigger_wobble(body)
+
+func _on_detection_area_body_exited(body):
+	print("Body exit: ", body.name)
+	trigger_wobble(body)

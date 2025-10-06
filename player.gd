@@ -104,19 +104,15 @@ func _physics_process(delta: float) -> void:
 			rotation.y = lerp_angle(rotation.y, target_rotation, 10.0 * delta)
 
 		if is_on_floor() and animation_player.current_animation != "Walk":
-			print("Walk switch anim: ", animation_player.current_animation)
 			if animation_player.current_animation == "Jump":
 				landing_player.play()
-				print("landing played")
 			animation_player.play("Walk", anim_blend_time)
 	else:
 		if is_on_floor():
 			velocity.x = lerp(velocity.x, 0.0, fric * delta)
 			velocity.z = lerp(velocity.z, 0.0, fric * delta)
-			print("Idle switch anim: ", animation_player.current_animation)
 			if animation_player.current_animation == "Jump":
 				landing_player.play()
-				print("landing played")
 			animation_player.play("Idle", anim_blend_time)
 
 	if not is_on_floor():
@@ -143,7 +139,6 @@ func set_being_chased(chased: bool):
 		apply_spot_shake()
 
 func apply_spot_shake():
-	print("shake")
 	var original_pos = camera.position
 	var shake_count = randf_range(shake_amt_range.x, shake_amt_range.y)
 

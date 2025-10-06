@@ -8,7 +8,8 @@
 		- trash collecting X XXXXX
 		- trash collected X XXX IN
 		- "ouch" X XX IN
-		- "win" X X
+		- "win" X X IN
+		- "bush" X XXX IN
 	Audio Stealth System
 	Menu cleanup
 	Level iteration (grass?, maybe more *dawg*)
