@@ -51,7 +51,6 @@ var mouse_captured = false
 signal player_died
 
 func _ready() -> void:
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	yaw = camera_pivot.global_rotation.y
 	pitch = camera_pivot.global_rotation.x
 	animation_player.play("Idle")
@@ -62,12 +61,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and not mouse_captured:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		mouse_captured = true
+		return  # Skip this event - don't use it for rotation
 	
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		yaw -= event.relative.x * mouse_sensitivity * 0.01
-		pitch -= event.relative.y * mouse_sensitivity * 0.01
-		pitch = clamp(pitch, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
-
+		# Add deadzone to filter out noise in web builds
+		if abs(event.relative.x) > 0.1 or abs(event.relative.y) > 0.1:
+			yaw -= event.relative.x * mouse_sensitivity * 0.01
+			pitch -= event.relative.y * mouse_sensitivity * 0.01
+			pitch = clamp(pitch, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
+	
 	if event.is_action_pressed("interact") and interactables_in_range.size() > 0 and current_interaction == null:
 		start_interaction(interactables_in_range[0])
 
