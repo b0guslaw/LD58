@@ -70,6 +70,7 @@ layout_mode = 2
 [node name="PauseLabel" type="Label" parent="PauseMenu/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.92941177, 0.8901961, 0.93333334, 1)
 theme_override_fonts/font = ExtResource("3_bhmmv")
 theme_override_font_sizes/font_size = 48
 text = "Paused"
@@ -82,6 +83,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.92941177, 0.8901961, 0.93333334, 1)
 theme_override_fonts/font = ExtResource("3_bhmmv")
 theme_override_font_sizes/font_size = 32
 text = "Resume"
@@ -89,12 +91,14 @@ text = "Resume"
 [node name="MenuButton" type="MenuButton" parent="PauseMenu/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8901961, 0.93333334, 1)
 theme_override_fonts/font = ExtResource("3_bhmmv")
 theme_override_font_sizes/font_size = 32
 text = "Back to Menu"
 
 [node name="QuitButton" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.8901961, 0.93333334, 1)
 theme_override_fonts/font = ExtResource("3_bhmmv")
 theme_override_font_sizes/font_size = 32
 text = "Quit Game"
