@@ -1,8 +1,9 @@
 @tool
 extends CharacterBody3D
 
-@export_group("Animation Behavior")
+@export_group("Animation/Physics")
 @export var rotation_speed_rads = 5.0
+@export var gravity = 9.8
 @export_range(0.0, 2.0) var animation_blend_rate = 1.0
 
 @export_group("Detection")
@@ -46,7 +47,7 @@ extends CharacterBody3D
 
 var start_position: Vector3
 var debug_range: CSGCylinder3D
-var wander_target: Vector3
+var wander_target: Vector3 = Vector3.ZERO
 var debug_wander_target: CSGCylinder3D
 var wander_timer: float = 0.0
 var is_wandering = false
@@ -82,8 +83,6 @@ func _ready():
 	last_position = start_position
 	
 	_check_debug()
-	
-	choose_new_wander_target()
 	update_debug_tools()
 
 func _check_debug():
@@ -113,6 +112,10 @@ func update_debug_tools():
 func _physics_process(delta):
 	if Engine.is_editor_hint():
 		return
+	
+	# run this first when everything is loaded
+	if wander_target == Vector3.ZERO:
+		choose_new_wander_target()
 	
 	can_see_player = check_player_seen()
 	
@@ -146,6 +149,9 @@ func _physics_process(delta):
 		if collider and collider.is_in_group("player") and collider.has_method("take_damage"):
 			collider.take_damage(global_position, knockback_power)
 	
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	
 	move_and_slide()
 
 func check_player_seen() -> bool:
@@ -175,7 +181,6 @@ func check_player_seen() -> bool:
 
 func chase(delta):
 	var direction = (last_known_pos - global_position)
-	direction.y = 0
 	
 	if direction.length() > wander_target_threshold:
 		if anim_player.current_animation != "Chase":
@@ -183,7 +188,8 @@ func chase(delta):
 		direction = direction.normalized()
 		velocity.x = direction.x * chase_speed
 		velocity.z = direction.z * chase_speed
-		smooth_look_at(direction, delta)
+		var rotation_dir = Vector3(direction.x, 0, direction.z)
+		smooth_look_at(rotation_dir, delta)
 		if check_if_stuck(delta, chase_speed):
 			last_known_pos = global_position
 			search_timer = 0.0
@@ -208,7 +214,11 @@ func choose_new_wander_target():
 	raycast.target_position = raycast.to_local(desired_target)
 	raycast.force_raycast_update()
 	
+	var manual_check = global_position.distance_to(desired_target)
+	print("Casting to: ", desired_target, " Hit: ", raycast.is_colliding())
+	
 	if raycast.is_colliding():
+		print("  Hit: ", raycast.get_collider().name, " at ", raycast.get_collision_point())
 		var hit_point = raycast.get_collision_point()
 		var direction = (hit_point - global_position).normalized()
 		wander_target = hit_point - direction * 0.5
@@ -232,7 +242,6 @@ func wander(delta):
 			anim_player.play("Walk", animation_blend_rate)
 	#move toward target
 	var direction = (wander_target - global_position)
-	direction.y = 0 # stick to the ground for now...
 	
 	if direction.length() < wander_target_threshold:
 		var variance = randf_range(-wander_pause_variance, wander_pause_time)
@@ -247,7 +256,8 @@ func wander(delta):
 	if check_if_stuck(delta, wander_speed):
 		choose_new_wander_target()
 	
-	smooth_look_at(direction, delta)
+	var rotation_dir = Vector3(direction.x, 0, direction.z)
+	smooth_look_at(rotation_dir, delta)
 
 func search_behavior(delta):
 	velocity = Vector3.ZERO

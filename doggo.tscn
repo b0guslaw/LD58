@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://r6q1dtv81bpp" path="res://models/doggo.blend" id="2_ubf87"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i62aq"]
-radius = 0.25683594
-height = 1.2444589
+radius = 0.3413086
+height = 1.4273257
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ubf87"]
 render_priority = 0
@@ -36,7 +36,7 @@ albedo_color = Color(0.7014084, 0.73, 0.38689998, 0.25490198)
 
 [node name="Doggo" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_ew3t6")
-animation_blend_rate = 0.63
+animation_blend_rate = 0.553
 detection_range = 20.0
 detection_angle = 40.0
 knockback_power = 5.0
@@ -49,7 +49,7 @@ is_debug = false
 transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, 0, -0.11201376, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.12407238, 0.09641987)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.2953514, 0.020043671)
 shape = SubResource("CapsuleShape3D_i62aq")
 debug_color = Color(0, 0.5950001, 0.7, 0.69411767)
 
@@ -61,7 +61,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vjuh0")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2788539, 0.399777)
-target_position = Vector3(-6.845056, 0, -17.333162)
+target_position = Vector3(9.110027, 0, -3.4131155)
 collision_mask = 3
 
 [node name="debug_vision_cone" type="Node3D" parent="."]
@@ -92,7 +92,7 @@ material = SubResource("StandardMaterial3D_ew3t6")
 metadata/_edit_lock_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_wander_target"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.845056, 0.2788539, -16.933386)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.110027, 0.2788539, -3.0133386)
 top_level = true
 visible = false
 layers = 512
