@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm2xs3dfsc03g"]
+
+[ext_resource type="Script" uid="uid://cd47b8rib6noe" path="res://models/mockups/shrubbery.gd" id="1_1aleo"]
+[ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="2_1aleo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1aleo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b317q"]
+render_priority = 0
+shader = ExtResource("2_1aleo")
+shader_parameter/albedo = Color(0.20822316, 0.398484, 0.29300752, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b317q"]
+
+[node name="Shrubbery" type="Node3D"]
+script = ExtResource("1_1aleo")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0.04829371, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.07521474, 0)
+shape = SubResource("BoxShape3D_1aleo")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, -0.06055069, -0.010256469, 0)
+radius = 1.0
+radial_segments = 8
+rings = 4
+smooth_faces = false
+material = SubResource("ShaderMaterial_b317q")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_b317q")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

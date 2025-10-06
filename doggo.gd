@@ -163,6 +163,9 @@ func check_player_seen() -> bool:
 	if distance > detection_range:
 		return false
 		
+	if player.is_hiding():
+		return false
+		
 	var forward = global_transform.basis.z
 	var angle = rad_to_deg(forward.angle_to(to_player.normalized()))
 	

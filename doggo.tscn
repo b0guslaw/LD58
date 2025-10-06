@@ -35,6 +35,7 @@ transparency = 4
 albedo_color = Color(0.7014084, 0.73, 0.38689998, 0.25490198)
 
 [node name="Doggo" type="CharacterBody3D" groups=["enemies"]]
+collision_mask = 3
 script = ExtResource("1_ew3t6")
 animation_blend_rate = 0.553
 detection_range = 20.0
@@ -92,7 +93,6 @@ material = SubResource("StandardMaterial3D_ew3t6")
 metadata/_edit_lock_ = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="debug_wander_target"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.110027, 0.2788539, -3.0133386)
 top_level = true
 visible = false
 layers = 512

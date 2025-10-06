@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5kktmnw2joak"]
+[gd_scene load_steps=17 format=3 uid="uid://c5kktmnw2joak"]
 
 [ext_resource type="PackedScene" uid="uid://cfi7eguqb7bg" path="res://models/mockups/level_foundation.tscn" id="1_tpall"]
 [ext_resource type="PackedScene" uid="uid://684js7dn5akq" path="res://models/mockups/house1.tscn" id="2_d0lcp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bsosi6iesgmh4" path="res://models/mockups/fence_hole.tscn" id="5_73o8q"]
 [ext_resource type="PackedScene" uid="uid://bja5uhfiu8nyi" path="res://models/mockups/trashcan.tscn" id="6_7jjo7"]
 [ext_resource type="PackedScene" uid="uid://rnw6vjamikjk" path="res://interactable.tscn" id="7_0dibe"]
+[ext_resource type="PackedScene" uid="uid://bm2xs3dfsc03g" path="res://models/mockups/shrubbery.tscn" id="8_ar1si"]
 [ext_resource type="PackedScene" uid="uid://4iwx02jhvfnt" path="res://models/mockups/street_lamp.tscn" id="8_p7bnq"]
 [ext_resource type="PackedScene" uid="uid://c2ubj8p3h8eo5" path="res://models/mockups/tree1.tscn" id="8_wn1nx"]
 [ext_resource type="PackedScene" uid="uid://cxr7t3jemfayn" path="res://models/mockups/tree2.tscn" id="9_q2v1b"]
@@ -1209,6 +1210,9 @@ metadata/_edit_lock_ = true
 [node name="Tree68" parent="Environment/Foliage" instance=ExtResource("9_q2v1b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113, 0, 90)
 metadata/_edit_lock_ = true
+
+[node name="Shrubbery" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.992527, 0, 26.132437)
 
 [node name="Lights" type="Node3D" parent="Environment"]
 
