@@ -99,3 +99,10 @@ layers = 512
 radius = 0.15
 height = 43.736
 material = SubResource("StandardMaterial3D_i62aq")
+
+[node name="WanderAudio" type="AudioStreamPlayer3D" parent="."]
+autoplay = true
+max_distance = 10.0
+
+[node name="ChaseAudio" type="AudioStreamPlayer3D" parent="."]
+max_distance = 50.0

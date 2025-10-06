@@ -44,6 +44,10 @@ extends CharacterBody3D
 	"Reset Wander Indicator", 
 	"CSGCylinder3D"
 	) var reset_wander_debug: Callable = Callable(self, "_reset_wander_debug")
+	
+	
+@onready var wander_audio = $WanderAudio
+@onready var chase_audio = $ChaseAudio
 
 var start_position: Vector3
 var debug_range: CSGCylinder3D
@@ -81,6 +85,11 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	start_position = global_position
 	last_position = start_position
+	
+	if wander_audio.stream:
+		wander_audio.stream.loop = true
+	if chase_audio.stream:
+		chase_audio.stream.loop = true
 	
 	_check_debug()
 	update_debug_tools()
@@ -183,6 +192,9 @@ func check_player_seen() -> bool:
 	return false
 
 func chase(delta):
+	wander_audio.stop()
+	chase_audio.play()
+
 	var direction = (last_known_pos - global_position)
 	
 	if direction.length() > wander_target_threshold:
@@ -232,6 +244,9 @@ func choose_new_wander_target():
 	update_debug_tools()
 	
 func wander(delta):
+	chase_audio.stop()
+	wander_audio.play()
+	
 	if wander_timer > 0: # waiting
 		if anim_player.current_animation != "Idle":
 			anim_player.play("Idle", animation_blend_rate)
