@@ -1,9 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://drlldp7l6q0o4" path="res://player.gd" id="1_4flbx"]
-[ext_resource type="PackedScene" uid="uid://bbyoqli3uj7yj" path="res://models/trash_panda.glb" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://cuodev85h6ldw" path="res://models/trash_panda.blend" id="2_onrkg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+radius = 0.3959961
+height = 1.4438477
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4flbx"]
 radius = 1.5558742
@@ -19,11 +21,14 @@ chase_fov = 90.0
 shake_amt_range = Vector2i(10, 20)
 shake_strength = 0.05
 
+[node name="trash_panda" parent="." instance=ExtResource("2_onrkg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0.11715573)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 0, 2.1930397e-09, 0.0501709)
 shape = SubResource("CapsuleShape3D_4flbx")
 
 [node name="Interaction" type="Area3D" parent="."]
@@ -44,9 +49,6 @@ margin = 0.1
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.96592605, 0.258819, 0, -0.258819, 0.96592605, 0, 1.8345182, 0.21064591)
 current = true
-
-[node name="trash_panda" parent="." instance=ExtResource("2_onrkg")]
-transform = Transform3D(-1.4424758e-08, 0, 0.33, 0, 0.33, 0, -0.33, 0, -1.4424758e-08, 0, 0.07028803, 0.063845396)
 
 [connection signal="body_entered" from="Interaction" to="." method="_on_interaction_body_entered"]
 [connection signal="body_exited" from="Interaction" to="." method="_on_interaction_body_exited"]
