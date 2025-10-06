@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm2248088nybf"]
+
+[ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="1_0ovvk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1ftq"]
+render_priority = 0
+shader = ExtResource("1_0ovvk")
+shader_parameter/albedo = Color(0.44662762, 0.26039064, 0.037779946, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wua85"]
+render_priority = 0
+shader = ExtResource("1_0ovvk")
+shader_parameter/albedo = Color(2.1658838e-07, 0.3120243, 0.38045976, 1)
+shader_parameter/shading_levels = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yp3vf"]
+render_priority = 0
+shader = ExtResource("1_0ovvk")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/shading_levels = 3
+
+[node name="Swingset" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.8660253, 0.49999997, 0, -0.49999997, 0.8660253, -0.9244744, 0.92056084, 0.5441877)
+radius = 0.1
+sides = 10
+material = SubResource("ShaderMaterial_d1ftq")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, -0.9244744, 0.92056084, -0.5974177)
+radius = 0.1
+sides = 10
+material = SubResource("ShaderMaterial_d1ftq")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.8660253, 0.49999997, 0, -0.49999997, 0.8660253, 1.7443192, 0.92056084, 0.5441877)
+radius = 0.1
+sides = 10
+material = SubResource("ShaderMaterial_d1ftq")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 1.7443192, 0.92056084, -0.5974177)
+radius = 0.1
+sides = 10
+material = SubResource("ShaderMaterial_d1ftq")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.40848553, 1.8164253, -0.011722684)
+radius = 0.1
+height = 2.674
+sides = 10
+material = SubResource("ShaderMaterial_d1ftq")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17080447, 0.40508312, 0)
+size = Vector3(0.55, 0.03, 0.3)
+material = SubResource("ShaderMaterial_wua85")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0440748, 0.40508312, 0)
+size = Vector3(0.55, 0.03, 0.3)
+material = SubResource("ShaderMaterial_wua85")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.7, 0, 0, 0, 0.02, 0.08976695, 1.1016828, 0.001319617)
+material = SubResource("ShaderMaterial_yp3vf")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.7, 0, 0, 0, 0.02, -0.43818858, 1.1016828, 0.001319617)
+material = SubResource("ShaderMaterial_yp3vf")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.7, 0, 0, 0, 0.02, 1.3223429, 1.1016828, 0.001319617)
+material = SubResource("ShaderMaterial_yp3vf")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.7, 0, 0, 0, 0.02, 0.79438734, 1.1016828, 0.001319617)
+material = SubResource("ShaderMaterial_yp3vf")
