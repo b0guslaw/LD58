@@ -51,9 +51,6 @@ volumetric_fog_emission = Color(0.011, 0.011, 0.02, 1)
 
 [node name="Test_Boundary" type="Node3D" parent="."]
 
-[node name="Fence" parent="Test_Boundary" instance=ExtResource("4_b54ba")]
-transform = Transform3D(50.685, 0, 0, 0, 2.26, 0, 0, 0, 1, 0, 0, 0)
-
 [node name="Fence2" parent="Test_Boundary" instance=ExtResource("4_b54ba")]
 transform = Transform3D(-2.2155116e-06, 0, -0.99999994, 0, 2.26, 0, 50.684998, 0, -4.3711385e-08, 0, 0, 0)
 
@@ -615,7 +612,150 @@ metadata/_edit_lock_ = true
 
 [node name="Fence17" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -70.45865, 0, 39.393135)
-metadata/_edit_lock_ = true
+
+[node name="Fence19" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -77.4362, 0, -12.909027)
+
+[node name="Fence78" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -77.4362, 0, -17.83283)
+
+[node name="Fence112" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -77.4362, 0, -22.786306)
+
+[node name="Fence122" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -77.4362, 0, -28.632753)
+
+[node name="Fence123" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -77.4362, 0, -33.557182)
+
+[node name="Fence124" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -77.4362, 0, -38.505066)
+
+[node name="Fence146" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -87.36406, 0, -17.71404)
+
+[node name="Fence151" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -87.36406, 0, -22.63847)
+
+[node name="Fence152" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.16891685, 0.13337341, -0.9765647, 0.03238992, 0.9910182, 0.12974487, 0.985098, -0.009714763, -0.17171963, -87.13086, 0, -27.586353)
+
+[node name="Fence153" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -87.36406, 0, -32.584354)
+
+[node name="Fence154" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -87.36406, 0, -37.508785)
+
+[node name="Fence155" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -87.36406, 0, -42.45667)
+
+[node name="Fence156" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(0.99993986, 0, -0.010960534, 0, 1, 0, 0.010960534, 0, 0.99993986, -89.68854, 0, -45.103313)
+
+[node name="Fence157" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(0.99993986, 0, -0.010960534, 0, 1, 0, 0.010960534, 0, 0.99993986, -94.61267, 0, -45.157288)
+
+[node name="Fence158" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(0.99993986, 0, -0.010960534, 0, 1, 0, 0.010960534, 0, 0.99993986, -99.56026, 0, -45.211517)
+
+[node name="Fence159" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(0.99993986, 0, -0.010960534, 0, 1, 0, 0.010960534, 0, 0.99993986, -104.432144, 0, -45.272346)
+
+[node name="Fence160" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(0.99993986, 0, -0.010960534, 0, 1, 0, 0.010960534, 0, 0.99993986, -109.35628, 0, -45.32632)
+
+[node name="Fence161" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(0.99993986, 0, -0.010960534, 0, 1, 0, 0.010960534, 0, 0.99993986, -114.30386, 0, -45.38055)
+
+[node name="Fence162" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(0.027206358, 0, 0.99962986, 0, 1, 0, -0.99962986, 0, 0.027206358, -116.99372, 0, -43.100666)
+
+[node name="Fence163" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(0.027206358, 0, 0.99962986, 0, 1, 0, -0.99962986, 0, 0.027206358, -117.12769, 0, -38.178062)
+
+[node name="Fence164" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.01504414, 0, 0.9998869, 0, 1, 0, -0.9998869, 0, -0.01504414, -117.121506, 0, -33.23201)
+
+[node name="Fence165" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(0.027206358, 0, 0.99962986, 0, 1, 0, -0.99962986, 0, 0.027206358, -116.99372, 0, -29.352001)
+
+[node name="Fence166" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(0.027206358, 0, 0.99962986, 0, 1, 0, -0.99962986, 0, 0.027206358, -117.12769, 0, -24.429398)
+
+[node name="Fence167" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(0.027206358, 0, 0.99962986, 0, 1, 0, -0.99962986, 0, 0.027206358, -117.262314, 0, -19.483345)
+
+[node name="Fence125" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -75.0848, 0, -41.04111)
+
+[node name="Fence126" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -70.12767, 0, -41.04111)
+
+[node name="Fence127" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -65.17725, 0, -41.04111)
+
+[node name="Fence128" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -60.220123, 0, -41.04111)
+
+[node name="Fence129" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -55.110886, 0, -41.04111)
+
+[node name="Fence130" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -50.153755, 0, -41.04111)
+
+[node name="Fence131" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -45.20334, 0, -41.04111)
+
+[node name="Fence132" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, -42.190556, 0, -37.523186)
+
+[node name="Fence133" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, -42.190556, 0, -32.499603)
+
+[node name="Fence134" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, -42.190556, 0, -27.531406)
+
+[node name="Fence135" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, -42.190556, 0, -22.612692)
+
+[node name="Fence137" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, -42.190556, 0, -12.687443)
+
+[node name="Fence138" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -44.75524, 0, -10.240099)
+
+[node name="Fence139" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -49.710503, 0, -10.240099)
+
+[node name="Fence140" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -54.682777, 0, -10.240099)
+
+[node name="Fence141" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -59.594814, 0, -10.240099)
+
+[node name="Fence142" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -64.66205, 0, -10.240099)
+
+[node name="Fence143" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -69.66468, 0, -10.240099)
+
+[node name="Fence144" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -74.68253, 0, -10.240099)
+
+[node name="Fence145" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -89.7081, 0, -15.348488)
+
+[node name="Fence147" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -99.59241, 0, -15.348488)
+
+[node name="Fence148" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -104.659645, 0, -15.348488)
+
+[node name="Fence149" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -109.66228, 0, -15.348488)
+
+[node name="Fence150" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
+transform = Transform3D(-0.9999999, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.9999999, -114.68013, 0, -15.348488)
 
 [node name="Fence18" parent="Environment/Fences" instance=ExtResource("4_b54ba")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -70.45865, 0, 44.393135)
@@ -623,7 +763,12 @@ metadata/_edit_lock_ = true
 
 [node name="FenceHole2" parent="Environment/Fences" instance=ExtResource("5_73o8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 0, 47)
-metadata/_edit_lock_ = true
+
+[node name="FenceHole4" parent="Environment/Fences" instance=ExtResource("5_73o8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.61943, 0, -15.352601)
+
+[node name="FenceHole5" parent="Environment/Fences" instance=ExtResource("5_73o8q")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -42.199387, 0, -17.58804)
 
 [node name="FenceHole3" parent="Environment/Fences" instance=ExtResource("5_73o8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.480457, 0, 118.46892)
@@ -1304,6 +1449,61 @@ spot_range = 66.077
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
+[node name="SpotLight3D6" type="SpotLight3D" parent="Environment/Lights"]
+transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -105.78814, 5.289434, -37.40194)
+light_cull_mask = 4294966783
+shadow_enabled = true
+shadow_normal_bias = 4.191
+shadow_blur = 2.273
+shadow_caster_mask = 4294966783
+spot_range = 66.077
+spot_angle = 63.82
+spot_angle_attenuation = 2.1435483
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="Environment/Lights"]
+transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -94.42837, 5.289434, -19.144123)
+light_cull_mask = 4294966783
+shadow_enabled = true
+shadow_normal_bias = 4.191
+shadow_blur = 2.273
+shadow_caster_mask = 4294966783
+spot_range = 66.077
+spot_angle = 63.82
+spot_angle_attenuation = 2.1435483
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Environment/Lights"]
+transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -59.810436, 5.289434, -33.515587)
+light_cull_mask = 4294966783
+shadow_enabled = true
+shadow_normal_bias = 4.191
+shadow_blur = 2.273
+shadow_caster_mask = 4294966783
+spot_range = 66.077
+spot_angle = 63.82
+spot_angle_attenuation = 2.1435483
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Environment/Lights"]
+transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -43.79534, 6.723514, -67.39795)
+light_cull_mask = 4294966783
+shadow_enabled = true
+shadow_normal_bias = 4.191
+shadow_blur = 2.273
+shadow_caster_mask = 4294966783
+spot_range = 66.077
+spot_angle = 63.82
+spot_angle_attenuation = 2.1435483
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Environment/Lights"]
+transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -44.887695, 6.723514, -86.181404)
+light_cull_mask = 4294966783
+shadow_enabled = true
+shadow_normal_bias = 4.191
+shadow_blur = 2.273
+shadow_caster_mask = 4294966783
+spot_range = 66.077
+spot_angle = 63.82
+spot_angle_attenuation = 2.1435483
+
 [node name="Streetlamp" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
 transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9993373, -40.115902, 0, 6.892806)
 
@@ -1351,6 +1551,18 @@ transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9
 
 [node name="Streetlamp4" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
 transform = Transform3D(-0.9993373, 0, 0.03639958, 0, 1, 0, -0.03639958, 0, -0.9993373, -106.52782, 0, 6.892806)
+
+[node name="Streetlamp17" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -115.8352, 0, -6.2406297)
+
+[node name="Streetlamp18" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -94.36039, 0, -6.4422793)
+
+[node name="Streetlamp19" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -77.061966, 0, -6.604713)
+
+[node name="Streetlamp20" parent="Environment/Lights" instance=ExtResource("8_p7bnq")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -49.42621, 0, -6.8642144)
 
 [node name="Interactables" type="Node3D" parent="."]
 
@@ -1427,7 +1639,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.969315, 0.020406246, 22.
 metadata/_edit_lock_ = true
 
 [node name="Trashcan13" parent="Interactables" instance=ExtResource("6_7jjo7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.205444, 0.020406246, -18.686369)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.63652, 0.020406246, -38.816647)
 
 [node name="Interactable" parent="Interactables/Trashcan13" instance=ExtResource("7_0dibe")]
 metadata/_edit_lock_ = true
@@ -1436,6 +1648,24 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.336136, 0.020406246, -35.668144)
 
 [node name="Interactable" parent="Interactables/Trashcan14" instance=ExtResource("7_0dibe")]
+metadata/_edit_lock_ = true
+
+[node name="Trashcan16" parent="Interactables" instance=ExtResource("6_7jjo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.878334, 0.020406246, -41.911892)
+
+[node name="Interactable" parent="Interactables/Trashcan16" instance=ExtResource("7_0dibe")]
+metadata/_edit_lock_ = true
+
+[node name="Trashcan17" parent="Interactables" instance=ExtResource("6_7jjo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.906788, 0.020406246, -86.15941)
+
+[node name="Interactable" parent="Interactables/Trashcan17" instance=ExtResource("7_0dibe")]
+metadata/_edit_lock_ = true
+
+[node name="Trashcan15" parent="Interactables" instance=ExtResource("6_7jjo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.510338, 1.280581, -67.15474)
+
+[node name="Interactable" parent="Interactables/Trashcan15" instance=ExtResource("7_0dibe")]
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("10_d0lcp")]
@@ -1447,21 +1677,17 @@ transform = Transform3D(-0.5134963, 0, -0.85809183, 0, 1, 0, 0.85809183, 0, -0.5
 animation_blend_rate = 1.0
 detection_range = 22.785
 wander_range = 50.345
-is_debug = true
 
 [node name="Doggo2" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(0.45675644, 0, 0.8895918, 0, 1, 0, -0.8895918, 0, 0.45675644, -54.342, 0.625, 39.003956)
 animation_blend_rate = 1.0
-is_debug = true
 
 [node name="Doggo3" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.648, 0.625, 87.45)
 animation_blend_rate = 1.0
 wander_range = 40.0
-is_debug = true
 
 [node name="Doggo4" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.467, 0.625, 83.329)
 animation_blend_rate = 1.0
 wander_range = 45.0
-is_debug = true

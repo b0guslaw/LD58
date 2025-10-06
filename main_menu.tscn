@@ -36,7 +36,7 @@ offset_right = 960.0
 offset_bottom = 195.0
 theme_override_fonts/font = SubResource("FontVariation_jix8l")
 theme_override_font_sizes/font_size = 64
-text = "Some Smart Game Name"
+text = "Raccoon Rumpus"
 horizontal_alignment = 1
 vertical_alignment = 1
 

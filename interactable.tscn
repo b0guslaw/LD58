@@ -43,7 +43,7 @@ transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 1.259249, 0)
 billboard = 1
 no_depth_test = true
 font = ExtResource("2_jcy0q")
-font_size = 128
+font_size = 112
 
 [node name="TrashAudio" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_rppcx")

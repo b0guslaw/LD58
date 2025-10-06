@@ -4,7 +4,7 @@ extends Camera3D
 
 @export var orbit_center: Vector3 = Vector3(0, 5, 0)
 @export var orbit_radius: float = 25.0
-@export var orbit_height: float = 15.0
+@export var orbit_height: float = 20.0
 @export var orbit_speed: float = 0.3
 @export var look_at_center: bool = true
 
