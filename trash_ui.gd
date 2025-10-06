@@ -18,7 +18,7 @@ func _ready():
 
 func update_trash_ui(trash_number: int):
 	trash_counter.text = "Trash %d / %d" % [trash_number, trash_total]
-	if trash_number == 1:
+	if trash_number == trash_total:
 		all_garbage_collected.emit()
 
 func set_up_trash_ui():
