@@ -1896,4 +1896,4 @@ wander_range = 45.0
 [node name="Doggo8" parent="." instance=ExtResource("11_pqh57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.9345, 0.625, -43.428505)
 animation_blend_rate = 1.0
-wander_range = 45.0
+wander_range = 2.73

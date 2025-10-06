@@ -26,3 +26,13 @@ offset_right = 305.0
 offset_bottom = 88.0
 text = "Trash: XX"
 label_settings = SubResource("LabelSettings_yw4e8")
+
+[node name="TrashTimer" type="Label" parent="."]
+offset_left = 940.0
+offset_top = 21.0
+offset_right = 1225.0
+offset_bottom = 89.0
+text = "Time: XX"
+label_settings = SubResource("LabelSettings_yw4e8")
+
+[node name="Timer" type="Timer" parent="."]

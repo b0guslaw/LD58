@@ -13,6 +13,8 @@ func _ready():
 		disable_gameplay_elements()
 		return
 		
+	TrashUi.reset_trash_timer()
+		
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	ScreenFade.instant_fill()
@@ -31,6 +33,8 @@ func _ready():
 	if player:
 		player.player_died.connect(_on_player_died)
 	TrashUi.all_garbage_collected.connect(_on_game_won)
+	
+	TrashUi.start_trash_timer()
 
 func _on_dog_spotted_player():
 	if is_menu_mode:
@@ -50,22 +54,28 @@ func _on_dog_lost_player():
 			player.set_being_chased(false)
 
 func _on_player_died():
+	TrashUi.stop_trash_timer()
 	print("oof") # set up "game won" or "game over" ui
 	NotificationUi.lose()
 	await get_tree().create_timer(reset_wait_time).timeout
 	ScreenFade.fade_out()
 	await ScreenFade.fade_out_complete
-	get_tree().reload_current_scene()
+	# get_tree().reload_current_scene()
+	NotificationUi.reset()
+	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func _on_game_won():
 	if is_menu_mode:
 		return
+	TrashUi.stop_trash_timer()
 	win_audio.play()
 	NotificationUi.win()
 	await get_tree().create_timer(reset_wait_time).timeout
 	ScreenFade.fade_out()
 	await ScreenFade.fade_out_complete
-	get_tree().reload_current_scene()
+	# get_tree().reload_current_scene()
+	NotificationUi.reset()
+	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func disable_gameplay_elements():
 	player = get_tree().get_first_node_in_group("player")
