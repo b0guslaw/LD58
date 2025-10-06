@@ -1523,7 +1523,18 @@ spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(-0.7134028, 0.22499101, -0.6636532, -0.18944493, 0.84986776, 0.4917677, 0.6746607, 0.4765542, -0.5636747, -24.9549, 4.648531, 71.10488)
+transform = Transform3D(-0.72782505, 0.2911249, -0.62090015, -0.1775938, 0.794509, 0.58070296, 0.6623678, 0.53291816, -0.52656156, -24.9549, 4.648531, 71.28718)
+light_cull_mask = 4294966783
+shadow_enabled = true
+shadow_normal_bias = 4.191
+shadow_blur = 2.273
+shadow_caster_mask = 4294966783
+spot_range = 66.077
+spot_angle = 63.82
+spot_angle_attenuation = 2.1435483
+
+[node name="SpotLight3D14" type="SpotLight3D" parent="Environment/Lights"]
+transform = Transform3D(-0.8471735, 0.1875552, -0.49711183, -0.17535594, 0.7844974, 0.5948228, 0.501545, 0.5910896, -0.63171643, -17.379482, 5.5403256, 107.53045)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
@@ -1534,7 +1545,7 @@ spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.77531874, 0.32290074, -0.54278547, 0.31186885, 0.5515937, 0.7736164, 0.5491983, -0.76907706, 0.32695827, -53.34559, 4.648531, 22.311478)
+transform = Transform3D(0.8630657, -0.42585322, 0.27160016, -0.4666917, -0.46669167, 0.7512641, -0.19317469, -0.77514386, -0.60152775, -47.587612, 4.0224757, 36.313293)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
@@ -1545,7 +1556,7 @@ spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.2226377, -0.92284024, 0.31432208, 0, 0.3224143, 0.94659865, -0.97490126, -0.21074855, 0.07178157, -96.89755, 3.5991015, 23.102596)
+transform = Transform3D(0.2226377, -0.92284024, 0.31432208, 0, 0.3224143, 0.94659865, -0.97490126, -0.21074855, 0.07178157, -101.16035, 6.8962464, 24.565695)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
@@ -1556,7 +1567,7 @@ spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.80123293, 0.34852707, 0.4863688, -2.0808159e-08, -0.8128466, 0.5824777, 0.59835255, -0.46670043, -0.65127957, -101.881165, 5.289434, 39.921898)
+transform = Transform3D(0.80123293, 0.34852707, 0.48636883, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -101.881165, 4.817405, 39.921898)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
@@ -1567,7 +1578,7 @@ spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -105.78814, 5.289434, -37.40194)
+transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -105.55299, 4.1013794, -39.675476)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
@@ -1578,7 +1589,7 @@ spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D10" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -94.42837, 5.289434, -19.144123)
+transform = Transform3D(0.5863724, 0.39518663, -0.7071032, 0, 0.87292206, 0.48785967, 0.8100416, -0.28606743, 0.5118574, -95.50021, 4.434648, -20.414984)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
@@ -1589,7 +1600,7 @@ spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D7" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -59.810436, 5.289434, -33.515587)
+transform = Transform3D(-0.5203764, 0.28898716, -0.80355144, -0.8067073, 0.14224422, 0.57357645, 0.28005677, 0.9467064, 0.1591075, -59.310413, 5.289434, -32.869858)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
@@ -1600,7 +1611,7 @@ spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D11" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -38.40191, 5.289434, -52.75514)
+transform = Transform3D(0.7312715, 0.08740974, 0.67646253, -0.4582035, -0.67170113, 0.58212304, 0.5052638, -0.73564744, -0.4511445, -38.40191, 5.289434, -53.74568)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
@@ -1622,7 +1633,7 @@ spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D8" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -43.79534, 6.723514, -67.39795)
+transform = Transform3D(0.024432115, 0.7335108, 0.6792385, 5.9398648e-08, -0.67944133, 0.73372984, 0.9997015, -0.01792653, -0.016600233, -44.18392, 6.723514, -67.39795)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
@@ -1644,7 +1655,7 @@ spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D13" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -37.419426, 6.723514, -102.04867)
+transform = Transform3D(0.8007313, 0.59840703, 0.027173478, 3.965755e-09, -0.04536295, 0.99897057, 0.5990237, -0.799907, -0.036323536, -40.37919, 5.397651, -106.16339)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191

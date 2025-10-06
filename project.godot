@@ -26,6 +26,10 @@ NotificationUi="*res://notification_ui.tscn"
 TrashUi="*res://trash_ui.tscn"
 ScreenFade="*res://screen_fade.tscn"
 
+[display]
+
+window/size/resizable=false
+
 [editor]
 
 movie_writer/movie_file="D:/_GODOT/test.ogv"
