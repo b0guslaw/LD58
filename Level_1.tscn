@@ -1489,7 +1489,7 @@ transform = Transform3D(0.965213, 0, 0.26146486, 0, 1, 0, -0.26146486, 0, 0.9652
 transform = Transform3D(0.965213, 0, 0.26146486, 0, 1, 0, -0.26146486, 0, 0.965213, -19.770714, 0.055336, -70.757614)
 
 [node name="Shrubbery16" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
-transform = Transform3D(0.8721718, 0, 0.48919982, 0, 1, 0, -0.48919982, 0, 0.8721718, -47.87924, 0.055336, -29.652977)
+transform = Transform3D(0.92657465, 0, 0.3761111, 0, 1, 0, -0.3761111, 0, 0.92657465, -47.87924, 0.055336, -24.6843)
 
 [node name="Shrubbery9" parent="Environment/Foliage" instance=ExtResource("8_ar1si")]
 transform = Transform3D(0.9732832, 0, 0.22960809, 0, 1, 0, -0.22960809, 0, 0.9732832, -85.69708, 0, 68.09588)

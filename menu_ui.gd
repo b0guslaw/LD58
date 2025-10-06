@@ -26,7 +26,6 @@ func _on_play_pressed() -> void:
 		await fade_timer.timeout
 	
 
-	print("Changing to level scene...")
 	var result = get_tree().change_scene_to_file(level_scene_path)
 	
 	if result != OK:
@@ -35,7 +34,6 @@ func _on_play_pressed() -> void:
 			ScreenFade.fade_in()
 
 func _on_quit_pressed() -> void:
-	print("Quitting game...")
 	if AmbientAudio:
 		AmbientAudio.fade_out()
 	if music_player:

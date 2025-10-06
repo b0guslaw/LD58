@@ -317,7 +317,6 @@ func check_if_stuck(delta, expected_speed: float) -> bool:
 	if distance_moved < expected_movement * stuck_threshold:
 		stuck_timer += delta
 		if stuck_timer > stuck_timeout:
-			print("Dog got stuck.")
 			stuck_timer = 0.0
 			return true
 	else:

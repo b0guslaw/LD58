@@ -14,7 +14,6 @@ func fade_in():
 	tween.tween_property(self, "volume_db", target_vol, fade_time)
 
 func fade_out():
-	print("fade music...")
 	volume_db = target_vol
 	var tween = create_tween()
 	tween.tween_property(self, "volume_db", -80.0, fade_time)
