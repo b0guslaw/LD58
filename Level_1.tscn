@@ -16,8 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://ltfpc6cnc0d" path="res://doggo.tscn" id="11_pqh57"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d0lcp"]
-sky_top_color = Color(0.0169, 0.06402501, 0.13, 1)
-sky_horizon_color = Color(0.071399994, 0.1743633, 0.34, 1)
+sky_top_color = Color(0.1564, 0.23290002, 0.34, 1)
+sky_horizon_color = Color(0.14598, 0.14220001, 0.18, 1)
 sky_curve = 0.5223273
 ground_bottom_color = Color(0.085716404, 0.14176688, 0.13615057, 1)
 ground_horizon_color = Color(0.0864, 0.087780006, 0.09, 1)
@@ -34,17 +34,19 @@ background_mode = 2
 sky = SubResource("Sky_pqh57")
 ambient_light_source = 3
 reflected_light_source = 2
-tonemap_mode = 2
 tonemap_exposure = 1.05
 tonemap_white = 3.65
 glow_enabled = true
-glow_intensity = 4.02
+glow_intensity = 1.27
 glow_strength = 0.83
-glow_bloom = 0.33
-fog_light_color = Color(0.0378, 0.10380997, 0.21, 1)
+glow_bloom = 0.16
+glow_hdr_threshold = 0.7
+glow_hdr_scale = 1.24
+fog_enabled = true
+fog_light_color = Color(0.013999999, 0.046966653, 0.1, 1)
+fog_light_energy = 3.45
 fog_density = 0.005
 fog_sky_affect = 0.792
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.021
 volumetric_fog_emission = Color(0.011, 0.011, 0.02, 1)
 
@@ -60,6 +62,7 @@ transform = Transform3D(0.9348752, -0.2566748, 0.24520665, -0.3468321, -0.807595
 metadata/_edit_lock_ = true
 
 [node name="Moon" type="DirectionalLight3D" parent="Light_Enviro"]
+visible = false
 light_color = Color(1, 0.95233333, 0.78, 1)
 light_energy = 16.0
 light_indirect_energy = 0.5
@@ -76,7 +79,7 @@ sky_mode = 2
 
 [node name="Lighting" type="DirectionalLight3D" parent="Light_Enviro"]
 light_color = Color(0.035132423, 0.077151485, 0.16455802, 1)
-light_energy = 5.527
+light_energy = 5.71
 light_indirect_energy = 0.5
 light_volumetric_fog_energy = 1.085
 light_specular = 1.05
@@ -102,51 +105,39 @@ metadata/_edit_lock_ = true
 
 [node name="House1" parent="Environment/Houses" instance=ExtResource("2_d0lcp")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 40, 0, -59)
-metadata/_edit_lock_ = true
 
 [node name="House9" parent="Environment/Houses" instance=ExtResource("2_d0lcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101, 0, -27)
-metadata/_edit_lock_ = true
 
 [node name="House3" parent="Environment/Houses" instance=ExtResource("2_d0lcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 0, 25)
-metadata/_edit_lock_ = true
 
 [node name="House4" parent="Environment/Houses" instance=ExtResource("2_d0lcp")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -102, 0, -30)
-metadata/_edit_lock_ = true
 
 [node name="House12" parent="Environment/Houses" instance=ExtResource("2_d0lcp")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -63, 0, -23)
-metadata/_edit_lock_ = true
 
 [node name="House13" parent="Environment/Houses" instance=ExtResource("2_d0lcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 0, 26)
-metadata/_edit_lock_ = true
 
 [node name="House14" parent="Environment/Houses" instance=ExtResource("2_d0lcp")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -31.704716, 0, 68)
-metadata/_edit_lock_ = true
 
 [node name="House5" parent="Environment/Houses" instance=ExtResource("2_d0lcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, 0, -97)
-metadata/_edit_lock_ = true
 
 [node name="House2" parent="Environment/Houses" instance=ExtResource("3_pqh57")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 28, 0, 61)
-metadata/_edit_lock_ = true
 
 [node name="House6" parent="Environment/Houses" instance=ExtResource("3_pqh57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, 103)
-metadata/_edit_lock_ = true
 
 [node name="House15" parent="Environment/Houses" instance=ExtResource("3_pqh57")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24, 0, 105)
-metadata/_edit_lock_ = true
 
 [node name="House16" parent="Environment/Houses" instance=ExtResource("3_pqh57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93, 0, 30)
-metadata/_edit_lock_ = true
 
 [node name="House7" parent="Environment/Houses" instance=ExtResource("3_pqh57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86, 0, 26)
@@ -1516,20 +1507,22 @@ transform = Transform3D(0.05016916, -0.4918049, 0.86925894, -0.18944496, 0.84986
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(-0.7134028, 0.22499101, -0.6636532, -0.18944493, 0.84986776, 0.4917677, 0.6746607, 0.4765542, -0.5636747, -24.9549, 4.648531, 71.10488)
+transform = Transform3D(-0.7134028, 0.22499101, -0.6636532, -0.22814044, 0.8208887, 0.5235395, 0.66257703, 0.5249007, -0.53429484, -24.9549, 4.648531, 71.10488)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
@@ -1538,9 +1531,10 @@ transform = Transform3D(0.77531874, 0.32290074, -0.54278547, 0.31186885, 0.55159
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
@@ -1549,9 +1543,10 @@ transform = Transform3D(0.2226377, -0.92284024, 0.31432208, 0, 0.3224143, 0.9465
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
@@ -1560,9 +1555,10 @@ transform = Transform3D(0.80123293, 0.34852707, 0.4863688, -2.0808159e-08, -0.81
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
@@ -1571,9 +1567,10 @@ transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
@@ -1582,9 +1579,10 @@ transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
@@ -1593,53 +1591,58 @@ transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D11" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -38.40191, 5.289434, -52.75514)
+transform = Transform3D(0.5528535, 0.48536617, 0.6773276, -2.6854465e-08, -0.8128466, 0.58247787, 0.8332783, -0.32202494, -0.4493851, -38.40191, 5.289434, -57.0819)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D12" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -20.220528, 6.0285316, -52.75514)
+transform = Transform3D(-0.31639743, 0.6091566, -0.7272007, 0.7361161, 0.64118546, 0.21682759, 0.5983525, -0.4667004, -0.65127945, -20.220528, 6.0285316, -52.75514)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D8" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -43.79534, 6.723514, -67.39795)
+transform = Transform3D(0.41972908, 0.5709853, 0.7055519, 0.022342304, -0.78360367, 0.62085927, 0.90737456, -0.24482904, -0.34165826, -43.79534, 3.8763595, -67.41574)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
 [node name="SpotLight3D9" type="SpotLight3D" parent="Environment/Lights"]
-transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -44.887695, 6.723514, -86.181404)
+transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8128466, 0.58247787, 0.59835255, -0.46670043, -0.6512795, -44.887695, 4.2996206, -86.181404)
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 
@@ -1648,9 +1651,10 @@ transform = Transform3D(0.80123293, 0.34852707, 0.48636886, -2.0808159e-08, -0.8
 light_cull_mask = 4294966783
 shadow_enabled = true
 shadow_normal_bias = 4.191
+shadow_reverse_cull_face = true
 shadow_blur = 2.273
 shadow_caster_mask = 4294966783
-spot_range = 66.077
+spot_range = 31.563
 spot_angle = 63.82
 spot_angle_attenuation = 2.1435483
 

@@ -46,10 +46,12 @@ var is_hidden: bool = false
 
 var footstep_timer = 0.0
 
+var mouse_captured = false
+
 signal player_died
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	yaw = camera_pivot.global_rotation.y
 	pitch = camera_pivot.global_rotation.x
 	animation_player.play("Idle")
@@ -57,6 +59,10 @@ func _ready() -> void:
 	TrashUi.update_trash_ui(trash_counter)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and not mouse_captured:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		mouse_captured = true
+	
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		yaw -= event.relative.x * mouse_sensitivity * 0.01
 		pitch -= event.relative.y * mouse_sensitivity * 0.01

@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0m22r0yr12o3"]
+[gd_scene load_steps=6 format=3 uid="uid://b0m22r0yr12o3"]
 
 [ext_resource type="Shader" uid="uid://c6evb31v3tfdn" path="res://models/toon_shader.gdshader" id="1_secmq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwh6u"]
-render_priority = 0
-shader = ExtResource("1_secmq")
-shader_parameter/albedo = Color(0.10340001, 0.15198335, 0.22, 1)
-shader_parameter/shading_levels = 3
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_secmq"]
+albedo_color = Color(0.101960786, 0.15294118, 0.21960784, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xgrau"]
+albedo_color = Color(0.69803923, 0.8509804, 0.8117647, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l71lf"]
 render_priority = 0
@@ -29,12 +29,12 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 10)
 polygon = PackedVector2Array(-10, 0, 0, 5, 1, 5, 8, 0)
 depth = 21.0
-material = SubResource("ShaderMaterial_wwh6u")
+material = SubResource("StandardMaterial3D_secmq")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -1.5)
 size = Vector3(18, 10, 23)
-material = SubResource("ShaderMaterial_l71lf")
+material = SubResource("StandardMaterial3D_xgrau")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 10, -9.704712)
