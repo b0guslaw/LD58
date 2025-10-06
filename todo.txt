@@ -1,4 +1,7 @@
 - NEED:
+	Lamp posts dont have collision...
+	Tighten up movement (ice skates)
+	Maybe make the dogs get faster over time during chase?
 	Sounds
 	Audio Stealth System
 	Menu cleanup
