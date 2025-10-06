@@ -2,18 +2,20 @@ extends CharacterBody3D
 
 @onready var animation_player = $trash_panda/AnimationPlayer
 
-# --- Movement Settings ---
+@export_range(0.0, 2.0) var anim_blend_time = 0.5
+@export_category("Movement Settings")
 @export var speed: float = 10.0
 @export var acceleration: float = 30.0
 @export var friction: float = 30.0
 @export var jump_force: float = 6.0
 @export var gravity: float = 14.0
 
-# --- Camera Settings ---
+@export_category("Camera Settings")
 @export var mouse_sensitivity: float = 0.8
 @export var min_pitch: float = -80.0
 @export var max_pitch: float = 80.0
-# --- FOV experiments ---
+
+@export_category("FOV & Shake Settings")
 @export var normal_fov = 75.0
 @export var chase_fov = 82.0
 @export var fov_lerp_speed = 2.0
@@ -39,7 +41,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	yaw = camera_pivot.global_rotation.y
 	pitch = camera_pivot.global_rotation.x
-	
+	animation_player.play("Idle")
 	camera_pivot.top_level = true
 	TrashUi.update_trash_ui(trash_counter)
 
@@ -90,14 +92,13 @@ func _physics_process(delta: float) -> void:
 			var target_rotation = atan2(move_dir.x, move_dir.z)
 			rotation.y = lerp_angle(rotation.y, target_rotation, 10.0 * delta)
 
-		if is_on_floor() and animation_player.current_animation != "ArmatureAction_001":
-			animation_player.play("ArmatureAction_001")
+		if is_on_floor() and animation_player.current_animation != "Walk":
+			animation_player.play("Walk", anim_blend_time)
 	else:
 		if is_on_floor():
 			velocity.x = lerp(velocity.x, 0.0, fric * delta)
 			velocity.z = lerp(velocity.z, 0.0, fric * delta)
-		if is_on_floor() and animation_player.is_playing():
-			animation_player.stop()
+			animation_player.play("Idle", anim_blend_time)
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -105,6 +106,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -0.01
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		animation_player.play("Jump", anim_blend_time)
 		velocity.y = jump_force
 	
 	move_and_slide()
@@ -134,6 +136,7 @@ func take_damage(attacker_pos: Vector3, knockback_power: float):
 	if is_alive:
 		print("player caught by doggo")
 		player_died.emit()
+		animation_player.play("Dead", anim_blend_time)
 		
 	is_alive = false
 	var knockback_dir = (global_position - attacker_pos).normalized()
